@@ -1,68 +1,96 @@
 import pandas as pd
+import geopandas as gpd
+from shapely.geometry import Point
+import folium
+from folium import Choropleth, LayerControl
 
-# 파일 경로 (상대경로)
-in_path  = "data/2022_1.csv"
-out_path = "data/2022_1_sorted.csv"
+base_path = r"C:\Users\UserK\Documents\GitHub\climate_project\data"
 
-# 1) 로드 및 컬럼 이름 정리
-df = pd.read_csv(in_path)
-df.columns = df.columns.str.strip()  # 열 이름 앞뒤 공백 제거
+# --- 데이터 로드 ---
+coords = pd.read_csv(f"{base_path}\\좌표.csv", encoding="utf-8")
+fixed = pd.read_csv(f"{base_path}\\예측발전량_PR고정_수정.csv", encoding="utf-8")
+variable = pd.read_csv(f"{base_path}\\예측발전량_PR가변_수정.csv", encoding="utf-8")
 
-# 2) 날짜 컬럼 찾기 (일자, date 등 후보)
-date_col_candidates = [c for c in df.columns if c.lower().replace(" ", "") in ("일자","date","날짜","일시","datetime")]
-if len(date_col_candidates) == 0:
-    # 좀 더 느슨하게 검색
-    date_col_candidates = [c for c in df.columns if "일" in c and "자" in c or "date" in c.lower() or "time" in c.lower()]
-if len(date_col_candidates) == 0:
-    raise RuntimeError("일자(날짜) 컬럼을 찾을 수 없습니다. 컬럼명을 확인해주세요: " + ", ".join(df.columns))
+# 평균값 계산
+fixed_mean = fixed.groupby("지점명")["예측발전량_PR고정(kWh)"].mean().reset_index()
+variable_mean = variable.groupby("지점명")["예측발전량_PR가변(kWh)"].mean().reset_index()
 
-date_col = date_col_candidates[0]  # 우선 첫 후보 사용
+# 병합
+merged = coords.merge(fixed_mean, on="지점명", how="left").merge(variable_mean, on="지점명", how="left")
 
-# 3) 정렬 전 간단 확인
-print("정렬 전 - 상위 3개 일자(원본 문자열):")
-print(df[date_col].head(3).to_list())
+# --- 행정구역 GeoJSON 로드 ---
+gdf_provinces = gpd.read_file(f"{base_path}\\skorea_provinces_geo.json", encoding="utf-8")
 
-# 4) 안전하게 datetime 변환 (다양한 포맷 허용)
-# 백업 컬럼을 만들어 원본 문자열 보존
-df['_date_original_str_'] = df[date_col].astype(str)
+# 영어 → 한글 변환
+name_map = {
+    "Seoul": "서울특별시", "Busan": "부산광역시", "Daegu": "대구광역시",
+    "Incheon": "인천광역시", "Gwangju": "광주광역시", "Daejeon": "대전광역시",
+    "Ulsan": "울산광역시", "Gyeonggi-do": "경기도", "Gangwon-do": "강원도",
+    "Chungcheongbuk-do": "충청북도", "Chungcheongnam-do": "충청남도",
+    "Jeollabuk-do": "전라북도", "Jeollanam-do": "전라남도",
+    "Gyeongsangbuk-do": "경상북도", "Gyeongsangnam-do": "경상남도",
+    "Jeju-do": "제주특별자치도", "Sejong": "세종특별자치시"
+}
+gdf_provinces["NAME_1"] = gdf_provinces["NAME_1"].map(name_map)
 
-# 시도 1: 표준 포맷 우선 (예: "YYYY-MM-DD" 또는 "YYYY-MM-DD HH:MM:SS")
-df['_date_parsed_'] = pd.to_datetime(df[date_col], errors='coerce', infer_datetime_format=True)
+# --- 좌표를 GeoDataFrame으로 변환 ---
+gdf_points = gpd.GeoDataFrame(
+    merged,
+    geometry=gpd.points_from_xy(merged["경도"], merged["위도"]),
+    crs="EPSG:4326"
+)
 
-# 시도 2: 아직 NaT인 경우, 여러 포맷 시도 (예: "YYYY/MM/DD", "YYYY.MM.DD", "YYYYMMDD")
-mask_nat = df['_date_parsed_'].isna()
-if mask_nat.any():
-    formats = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%Y/%m/%d", "%Y.%m.%d", "%Y%m%d", "%Y-%m-%d %H:%M"]
-    for fmt in formats:
-        try:
-            parsed = pd.to_datetime(df.loc[mask_nat, date_col], format=fmt, errors='coerce')
-            df.loc[mask_nat, '_date_parsed_'] = parsed
-            mask_nat = df['_date_parsed_'].isna()
-            if not mask_nat.any():
-                break
-        except Exception:
-            pass
+# --- 각 지점이 속한 도 이름 매핑 ---
+joined = gpd.sjoin(gdf_points, gdf_provinces[['geometry', 'NAME_1']], how="left", predicate="within")
+joined = joined.rename(columns={"NAME_1": "도"})
 
-# 시도 3: 아직 NaT가 있으면 마지막으로 파이썬 파서에 맡김 (어쩔 수 없음)
-mask_nat = df['_date_parsed_'].isna()
-if mask_nat.any():
-    df.loc[mask_nat, '_date_parsed_'] = pd.to_datetime(df.loc[mask_nat, date_col].astype(str), errors='coerce')
+# --- 도별 평균 발전량 계산 ---
+prov_mean = joined.groupby("도")[["예측발전량_PR고정(kWh)", "예측발전량_PR가변(kWh)"]].mean().reset_index()
 
-# 5) 정렬 - 일자(파싱된) 기준으로 오름차순. NaT는 맨 뒤로
-df_sorted = df.sort_values(by='_date_parsed_', ascending=True, na_position='last').reset_index(drop=True)
+# GeoDataFrame에 합치기
+gdf_provinces = gdf_provinces.merge(prov_mean, left_on="NAME_1", right_on="도", how="left")
 
-# 6) 원래 날짜 컬럼은 원본 문자열로 복원(형식 유지)
-df_sorted[date_col] = df_sorted['_date_original_str_']
+# --- 지도 생성 ---
+center_lat, center_lon = merged["위도"].mean(), merged["경도"].mean()
+m = folium.Map(location=[center_lat, center_lon], zoom_start=7, tiles="CartoDB positron")
 
-# 7) 임시 컬럼 삭제
-df_sorted = df_sorted.drop(columns=['_date_original_str_', '_date_parsed_'])
+# --- Choropleth (도별 색상 지도) ---
+for col, label in [("예측발전량_PR고정(kWh)", "PR 고정"), ("예측발전량_PR가변(kWh)", "PR 가변")]:
+    choropleth = Choropleth(
+        geo_data=gdf_provinces,
+        data=gdf_provinces,
+        columns=["NAME_1", col],
+        key_on="feature.properties.NAME_1",
+        fill_color="YlOrRd",
+        fill_opacity=0.7,
+        line_opacity=0.2,
+        legend_name=f"도별 평균 예측발전량 ({label}) [kWh]",
+        name=f"{label} 지도"
+    )
+    choropleth.add_to(m)
 
-# 8) 저장
-df_sorted.to_csv(out_path, index=False, encoding='utf-8-sig')
+# --- 지점별 마커 추가 ---
+for _, row in joined.iterrows():
+    popup_text = (
+        f"<b>지점명:</b> {row['지점명']}<br>"
+        f"<b>도:</b> {row['도']}<br>"
+        f"<b>예측발전량(PR 고정):</b> {row['예측발전량_PR고정(kWh)']:.2f} kWh<br>"
+        f"<b>예측발전량(PR 가변):</b> {row['예측발전량_PR가변(kWh)']:.2f} kWh"
+    )
+    folium.CircleMarker(
+        location=[row["위도"], row["경도"]],
+        radius=5,
+        color="black",
+        fill=True,
+        fill_opacity=0.8,
+        fill_color="blue",
+        popup=folium.Popup(popup_text, max_width=300)
+    ).add_to(m)
 
-# 9) 결과 확인 출력
-print("\n정렬 후 - 상위 5개 일자:")
-print(df_sorted[date_col].head(5).to_list())
-print("\n정렬 후 - 하위 5개 일자:")
-print(df_sorted[date_col].tail(5).to_list())
-print(f"\n✅ 완료: '{out_path}'에 저장되었습니다. (원본 파일은 변경되지 않음)")
+# --- 지도 제어기 추가 (레이어 전환용) ---
+LayerControl(collapsed=False).add_to(m)
+
+# --- 저장 ---
+output_path = f"{base_path}\\도별_평균_예측발전량_지도.html"
+m.save(output_path)
+print("✅ 지도 저장 완료:", output_path)

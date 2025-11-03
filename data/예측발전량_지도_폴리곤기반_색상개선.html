@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_aaabae7ff357e14bc4b0ce54a1316d2c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_aaabae7ff357e14bc4b0ce54a1316d2c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_aaabae7ff357e14bc4b0ce54a1316d2c = L.map(
+                "map_aaabae7ff357e14bc4b0ce54a1316d2c",
+                {
+                    center: [36.0887412371134, 127.74677938144329],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ae6aaaa6c3d28e563037210e0eff1a92 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ae6aaaa6c3d28e563037210e0eff1a92.addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+            var circle_marker_4ab8490181b5e3cc538bf2098474ef69 = L.circleMarker(
+                [38.2043, 128.5912],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_8f74d3df8c02c6f68a7964e11d1b9d82 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2d6e97f4d4ea3f381357100b29cc8f7e = $(`<div id="html_2d6e97f4d4ea3f381357100b29cc8f7e" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 속초<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 307.08 kWh<br><b>예측 발전량(PR 가변):</b> 312.07 kWh</div>`)[0];
+                popup_8f74d3df8c02c6f68a7964e11d1b9d82.setContent(html_2d6e97f4d4ea3f381357100b29cc8f7e);
+            
+        
+
+        circle_marker_4ab8490181b5e3cc538bf2098474ef69.bindPopup(popup_8f74d3df8c02c6f68a7964e11d1b9d82)
+        ;
+
+        
+    
+    
+            var circle_marker_459637b759ed42745daed585184ac821 = L.circleMarker(
+                [37.9474, 127.7549],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_678e970b0ce20c951eb99f5656f239c4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_955ce3d73c573557d02dec8783db984a = $(`<div id="html_955ce3d73c573557d02dec8783db984a" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 북춘천<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 304.48 kWh<br><b>예측 발전량(PR 가변):</b> 308.16 kWh</div>`)[0];
+                popup_678e970b0ce20c951eb99f5656f239c4.setContent(html_955ce3d73c573557d02dec8783db984a);
+            
+        
+
+        circle_marker_459637b759ed42745daed585184ac821.bindPopup(popup_678e970b0ce20c951eb99f5656f239c4)
+        ;
+
+        
+    
+    
+            var circle_marker_9f55cd55b81d322af38f34ac5f3f1ccd = L.circleMarker(
+                [38.146, 127.3135],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_59fcaaeac0137395be6a132620ca5221 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3ae174551c9772e059b481ddf82f844a = $(`<div id="html_3ae174551c9772e059b481ddf82f844a" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 철원<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 302.31 kWh<br><b>예측 발전량(PR 가변):</b> 306.45 kWh</div>`)[0];
+                popup_59fcaaeac0137395be6a132620ca5221.setContent(html_3ae174551c9772e059b481ddf82f844a);
+            
+        
+
+        circle_marker_9f55cd55b81d322af38f34ac5f3f1ccd.bindPopup(popup_59fcaaeac0137395be6a132620ca5221)
+        ;
+
+        
+    
+    
+            var circle_marker_11c12b46db8b11958458270a96f23fb6 = L.circleMarker(
+                [37.9016, 127.061],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_e87254cd095ec14d556cde8bc9082475 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_afdf9628336bd821460fae2fd6c8a95f = $(`<div id="html_afdf9628336bd821460fae2fd6c8a95f" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 동두천<br><b>도:</b> 경기도<br><b>예측 발전량(PR 고정):</b> 286.49 kWh<br><b>예측 발전량(PR 가변):</b> 290.53 kWh</div>`)[0];
+                popup_e87254cd095ec14d556cde8bc9082475.setContent(html_afdf9628336bd821460fae2fd6c8a95f);
+            
+        
+
+        circle_marker_11c12b46db8b11958458270a96f23fb6.bindPopup(popup_e87254cd095ec14d556cde8bc9082475)
+        ;
+
+        
+    
+    
+            var circle_marker_f13745a24119c20c503ba98c4bfb9d0c = L.circleMarker(
+                [37.7599, 126.78],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_1304f500e1c7421afed483336b4b09ca = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f095eba02a1901022c4e4743db61c36f = $(`<div id="html_f095eba02a1901022c4e4743db61c36f" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 파주<br><b>도:</b> 경기도<br><b>예측 발전량(PR 고정):</b> 293.72 kWh<br><b>예측 발전량(PR 가변):</b> 298.29 kWh</div>`)[0];
+                popup_1304f500e1c7421afed483336b4b09ca.setContent(html_f095eba02a1901022c4e4743db61c36f);
+            
+        
+
+        circle_marker_f13745a24119c20c503ba98c4bfb9d0c.bindPopup(popup_1304f500e1c7421afed483336b4b09ca)
+        ;
+
+        
+    
+    
+            var circle_marker_5198c2c8611b94661901ce80e45a92af = L.circleMarker(
+                [37.6771, 128.7182],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_14c13d7342b505c71985e72ae47ac671 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_72201b4b6e2882d2707d0bec5614e632 = $(`<div id="html_72201b4b6e2882d2707d0bec5614e632" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 대관령<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 311.32 kWh<br><b>예측 발전량(PR 가변):</b> 318.85 kWh</div>`)[0];
+                popup_14c13d7342b505c71985e72ae47ac671.setContent(html_72201b4b6e2882d2707d0bec5614e632);
+            
+        
+
+        circle_marker_5198c2c8611b94661901ce80e45a92af.bindPopup(popup_14c13d7342b505c71985e72ae47ac671)
+        ;
+
+        
+    
+    
+            var circle_marker_8e6c47ef581a1650846e6ac82a8d7e91 = L.circleMarker(
+                [37.8813, 127.7298],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_f7e19271fdb1b24baf388cfc1544ca3b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_83812756b7e72f51a0789b820ad7e49d = $(`<div id="html_83812756b7e72f51a0789b820ad7e49d" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 춘천<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 291.43 kWh<br><b>예측 발전량(PR 가변):</b> 294.38 kWh</div>`)[0];
+                popup_f7e19271fdb1b24baf388cfc1544ca3b.setContent(html_83812756b7e72f51a0789b820ad7e49d);
+            
+        
+
+        circle_marker_8e6c47ef581a1650846e6ac82a8d7e91.bindPopup(popup_f7e19271fdb1b24baf388cfc1544ca3b)
+        ;
+
+        
+    
+    
+            var circle_marker_4f85144c5d436e0a3e55ecb924986461 = L.circleMarker(
+                [37.967, 124.63],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_7301187862ac43f81fbe4fa504b535ce = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_19871a38e596090299222a6e52f4c1e3 = $(`<div id="html_19871a38e596090299222a6e52f4c1e3" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 백령도<br><b>도:</b> nan<br><b>예측 발전량(PR 고정):</b> 314.26 kWh<br><b>예측 발전량(PR 가변):</b> 319.71 kWh</div>`)[0];
+                popup_7301187862ac43f81fbe4fa504b535ce.setContent(html_19871a38e596090299222a6e52f4c1e3);
+            
+        
+
+        circle_marker_4f85144c5d436e0a3e55ecb924986461.bindPopup(popup_7301187862ac43f81fbe4fa504b535ce)
+        ;
+
+        
+    
+    
+            var circle_marker_8ca8db77d15b46dd7da21df3f0c5022d = L.circleMarker(
+                [37.802, 128.855],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_8c41ea34dba0b3fa054c52f4f836c9ba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8c737e822a1716048904c3aafba58489 = $(`<div id="html_8c737e822a1716048904c3aafba58489" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 북강릉<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 296.10 kWh<br><b>예측 발전량(PR 가변):</b> 299.82 kWh</div>`)[0];
+                popup_8c41ea34dba0b3fa054c52f4f836c9ba.setContent(html_8c737e822a1716048904c3aafba58489);
+            
+        
+
+        circle_marker_8ca8db77d15b46dd7da21df3f0c5022d.bindPopup(popup_8c41ea34dba0b3fa054c52f4f836c9ba)
+        ;
+
+        
+    
+    
+            var circle_marker_4c104264bce2ef15327ec449f004ff48 = L.circleMarker(
+                [37.7519, 128.8761],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_e32e2abfca5988223394b5b3a0fbf25f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0ca3c5ada2955d89ad35b97b2fbf23f8 = $(`<div id="html_0ca3c5ada2955d89ad35b97b2fbf23f8" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 강릉<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 292.24 kWh<br><b>예측 발전량(PR 가변):</b> 294.39 kWh</div>`)[0];
+                popup_e32e2abfca5988223394b5b3a0fbf25f.setContent(html_0ca3c5ada2955d89ad35b97b2fbf23f8);
+            
+        
+
+        circle_marker_4c104264bce2ef15327ec449f004ff48.bindPopup(popup_e32e2abfca5988223394b5b3a0fbf25f)
+        ;
+
+        
+    
+    
+            var circle_marker_2215486109de4b47b5eb73c4799000e4 = L.circleMarker(
+                [37.509, 129.1235],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_b4de0e5a51a58ce387a219baa689b57e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_96cf99778f7d72f254969e0ed6544c0d = $(`<div id="html_96cf99778f7d72f254969e0ed6544c0d" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 동해<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 318.13 kWh<br><b>예측 발전량(PR 가변):</b> 323.43 kWh</div>`)[0];
+                popup_b4de0e5a51a58ce387a219baa689b57e.setContent(html_96cf99778f7d72f254969e0ed6544c0d);
+            
+        
+
+        circle_marker_2215486109de4b47b5eb73c4799000e4.bindPopup(popup_b4de0e5a51a58ce387a219baa689b57e)
+        ;
+
+        
+    
+    
+            var circle_marker_ff62193db1b98e7d36d3e39bd67641b6 = L.circleMarker(
+                [37.5665, 126.978],
+                {"bubblingMouseEvents": true, "color": "#FF0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_16fb383ebceeafda4c367baea8313ff9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e43852642057d34baf830b835489ce10 = $(`<div id="html_e43852642057d34baf830b835489ce10" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 서울<br><b>도:</b> 서울특별시<br><b>예측 발전량(PR 고정):</b> 297.66 kWh<br><b>예측 발전량(PR 가변):</b> 300.40 kWh</div>`)[0];
+                popup_16fb383ebceeafda4c367baea8313ff9.setContent(html_e43852642057d34baf830b835489ce10);
+            
+        
+
+        circle_marker_ff62193db1b98e7d36d3e39bd67641b6.bindPopup(popup_16fb383ebceeafda4c367baea8313ff9)
+        ;
+
+        
+    
+    
+            var circle_marker_5e0a92ce72fd39522006347f5e46ee28 = L.circleMarker(
+                [37.4563, 126.7052],
+                {"bubblingMouseEvents": true, "color": "#FF7F00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF7F00", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_c09e3d7685c018f2838ab3be8d2616d2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_db1016b91377f68b3d2ecd3a13ac3f33 = $(`<div id="html_db1016b91377f68b3d2ecd3a13ac3f33" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 인천<br><b>도:</b> 인천광역시<br><b>예측 발전량(PR 고정):</b> 303.51 kWh<br><b>예측 발전량(PR 가변):</b> 306.85 kWh</div>`)[0];
+                popup_c09e3d7685c018f2838ab3be8d2616d2.setContent(html_db1016b91377f68b3d2ecd3a13ac3f33);
+            
+        
+
+        circle_marker_5e0a92ce72fd39522006347f5e46ee28.bindPopup(popup_c09e3d7685c018f2838ab3be8d2616d2)
+        ;
+
+        
+    
+    
+            var circle_marker_25f20541e61283643145f8d8ac7c021e = L.circleMarker(
+                [37.3422, 127.9202],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_9d7a78ebb34f93b66ec494d365268aa9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2eefdd426f7f138194f4336e409c40c8 = $(`<div id="html_2eefdd426f7f138194f4336e409c40c8" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 원주<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 297.93 kWh<br><b>예측 발전량(PR 가변):</b> 300.88 kWh</div>`)[0];
+                popup_9d7a78ebb34f93b66ec494d365268aa9.setContent(html_2eefdd426f7f138194f4336e409c40c8);
+            
+        
+
+        circle_marker_25f20541e61283643145f8d8ac7c021e.bindPopup(popup_9d7a78ebb34f93b66ec494d365268aa9)
+        ;
+
+        
+    
+    
+            var circle_marker_1e6f09cce16bba433f1f38f8ba6bdc1e = L.circleMarker(
+                [37.4866, 130.9051],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_c7d7300d78c758be91a6514b0b002864 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_db8f3fdc9eef83cec5a4a799d7ecde71 = $(`<div id="html_db8f3fdc9eef83cec5a4a799d7ecde71" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 울릉도<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 285.00 kWh<br><b>예측 발전량(PR 가변):</b> 288.04 kWh</div>`)[0];
+                popup_c7d7300d78c758be91a6514b0b002864.setContent(html_db8f3fdc9eef83cec5a4a799d7ecde71);
+            
+        
+
+        circle_marker_1e6f09cce16bba433f1f38f8ba6bdc1e.bindPopup(popup_c7d7300d78c758be91a6514b0b002864)
+        ;
+
+        
+    
+    
+            var circle_marker_ff27419a3f982b92804dcce57c1135f6 = L.circleMarker(
+                [37.2636, 127.0286],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_592e8700d59f9c9bb269fe59211e315a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_019ac3d152b507d15b569dfbb2e68de2 = $(`<div id="html_019ac3d152b507d15b569dfbb2e68de2" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 수원<br><b>도:</b> 경기도<br><b>예측 발전량(PR 고정):</b> 296.05 kWh<br><b>예측 발전량(PR 가변):</b> 299.18 kWh</div>`)[0];
+                popup_592e8700d59f9c9bb269fe59211e315a.setContent(html_019ac3d152b507d15b569dfbb2e68de2);
+            
+        
+
+        circle_marker_ff27419a3f982b92804dcce57c1135f6.bindPopup(popup_592e8700d59f9c9bb269fe59211e315a)
+        ;
+
+        
+    
+    
+            var circle_marker_3a42431a42d187c4ec6bfcbb58b6fdfd = L.circleMarker(
+                [37.1838, 128.46],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_8a1290422ed9f732a49707753fd290f6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ea216e6edba7326b9c918603d588ed22 = $(`<div id="html_ea216e6edba7326b9c918603d588ed22" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 영월<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 283.30 kWh<br><b>예측 발전량(PR 가변):</b> 287.86 kWh</div>`)[0];
+                popup_8a1290422ed9f732a49707753fd290f6.setContent(html_ea216e6edba7326b9c918603d588ed22);
+            
+        
+
+        circle_marker_3a42431a42d187c4ec6bfcbb58b6fdfd.bindPopup(popup_8a1290422ed9f732a49707753fd290f6)
+        ;
+
+        
+    
+    
+            var circle_marker_82d20cf30ca1ea1d8521cecf0bdb935a = L.circleMarker(
+                [36.9714, 127.9526],
+                {"bubblingMouseEvents": true, "color": "#00CED1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00CED1", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_1bf0d48506268787051382ae2654b405 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bf9917b20a25d0cb21968ec619d7e853 = $(`<div id="html_bf9917b20a25d0cb21968ec619d7e853" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 충주<br><b>도:</b> 충청북도<br><b>예측 발전량(PR 고정):</b> 294.75 kWh<br><b>예측 발전량(PR 가변):</b> 298.26 kWh</div>`)[0];
+                popup_1bf0d48506268787051382ae2654b405.setContent(html_bf9917b20a25d0cb21968ec619d7e853);
+            
+        
+
+        circle_marker_82d20cf30ca1ea1d8521cecf0bdb935a.bindPopup(popup_1bf0d48506268787051382ae2654b405)
+        ;
+
+        
+    
+    
+            var circle_marker_716d2ee7bee78cd1681ce05001a235a4 = L.circleMarker(
+                [36.781, 126.451],
+                {"bubblingMouseEvents": true, "color": "#1E90FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1E90FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_8bf93f2127ac955704e09c0d2116c3c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7d4968c60857118017ffc9c6254371f1 = $(`<div id="html_7d4968c60857118017ffc9c6254371f1" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 서산<br><b>도:</b> 충청남도<br><b>예측 발전량(PR 고정):</b> 301.28 kWh<br><b>예측 발전량(PR 가변):</b> 304.81 kWh</div>`)[0];
+                popup_8bf93f2127ac955704e09c0d2116c3c6.setContent(html_7d4968c60857118017ffc9c6254371f1);
+            
+        
+
+        circle_marker_716d2ee7bee78cd1681ce05001a235a4.bindPopup(popup_8bf93f2127ac955704e09c0d2116c3c6)
+        ;
+
+        
+    
+    
+            var circle_marker_f53ab599416aa9dff048e13627eb01e2 = L.circleMarker(
+                [36.993, 129.4098],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_3690dc70247946e9ace598ee5c4ae436 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f1768b018fa18b5c80e36591fc876cd3 = $(`<div id="html_f1768b018fa18b5c80e36591fc876cd3" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 울진<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 283.30 kWh<br><b>예측 발전량(PR 가변):</b> 287.65 kWh</div>`)[0];
+                popup_3690dc70247946e9ace598ee5c4ae436.setContent(html_f1768b018fa18b5c80e36591fc876cd3);
+            
+        
+
+        circle_marker_f53ab599416aa9dff048e13627eb01e2.bindPopup(popup_3690dc70247946e9ace598ee5c4ae436)
+        ;
+
+        
+    
+    
+            var circle_marker_7b872108f0007b172055da5e0ebf07e4 = L.circleMarker(
+                [36.6424, 127.489],
+                {"bubblingMouseEvents": true, "color": "#00CED1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00CED1", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_93d98a2e4e42e9debcf015ff14838c27 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ccb9901466d461b50fceb4428cbab4d6 = $(`<div id="html_ccb9901466d461b50fceb4428cbab4d6" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 청주<br><b>도:</b> 충청북도<br><b>예측 발전량(PR 고정):</b> 309.28 kWh<br><b>예측 발전량(PR 가변):</b> 310.92 kWh</div>`)[0];
+                popup_93d98a2e4e42e9debcf015ff14838c27.setContent(html_ccb9901466d461b50fceb4428cbab4d6);
+            
+        
+
+        circle_marker_7b872108f0007b172055da5e0ebf07e4.bindPopup(popup_93d98a2e4e42e9debcf015ff14838c27)
+        ;
+
+        
+    
+    
+            var circle_marker_0d8725cbd61494e1ff39e1d251c7606f = L.circleMarker(
+                [36.3504, 127.3845],
+                {"bubblingMouseEvents": true, "color": "#9370DB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9370DB", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_61e5fe63fb491c0d748cd34cf417cca9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b61afe1d53b8614b4daed326e4fda840 = $(`<div id="html_b61afe1d53b8614b4daed326e4fda840" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 대전<br><b>도:</b> 대전광역시<br><b>예측 발전량(PR 고정):</b> 309.76 kWh<br><b>예측 발전량(PR 가변):</b> 312.27 kWh</div>`)[0];
+                popup_61e5fe63fb491c0d748cd34cf417cca9.setContent(html_b61afe1d53b8614b4daed326e4fda840);
+            
+        
+
+        circle_marker_0d8725cbd61494e1ff39e1d251c7606f.bindPopup(popup_61e5fe63fb491c0d748cd34cf417cca9)
+        ;
+
+        
+    
+    
+            var circle_marker_f31cbc61a27a6c38f91fa242cfc62925 = L.circleMarker(
+                [36.219, 128.0],
+                {"bubblingMouseEvents": true, "color": "#00CED1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00CED1", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_0b0cb645da82323a9ceb1768b8a2b8e6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_537b4b02dfeff3ebd5467765da555cbb = $(`<div id="html_537b4b02dfeff3ebd5467765da555cbb" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 추풍령<br><b>도:</b> 충청북도<br><b>예측 발전량(PR 고정):</b> 311.45 kWh<br><b>예측 발전량(PR 가변):</b> 315.73 kWh</div>`)[0];
+                popup_0b0cb645da82323a9ceb1768b8a2b8e6.setContent(html_537b4b02dfeff3ebd5467765da555cbb);
+            
+        
+
+        circle_marker_f31cbc61a27a6c38f91fa242cfc62925.bindPopup(popup_0b0cb645da82323a9ceb1768b8a2b8e6)
+        ;
+
+        
+    
+    
+            var circle_marker_2e0effb2ac24c902cf336684fbb55727 = L.circleMarker(
+                [36.5683, 128.7294],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_6240d7313b9b9e6c7e1fd3959b0ea94c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cf2dc9f98bb34a53c2931e838e3d418e = $(`<div id="html_cf2dc9f98bb34a53c2931e838e3d418e" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 안동<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 317.72 kWh<br><b>예측 발전량(PR 가변):</b> 321.11 kWh</div>`)[0];
+                popup_6240d7313b9b9e6c7e1fd3959b0ea94c.setContent(html_cf2dc9f98bb34a53c2931e838e3d418e);
+            
+        
+
+        circle_marker_2e0effb2ac24c902cf336684fbb55727.bindPopup(popup_6240d7313b9b9e6c7e1fd3959b0ea94c)
+        ;
+
+        
+    
+    
+            var circle_marker_098a39db1e47bd02c76f5a4dec8abf9f = L.circleMarker(
+                [36.415, 128.16],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_918ecd1520355c6c2509ab5ffee18841 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af3f0744b03dab205eb7e2ebfce5813e = $(`<div id="html_af3f0744b03dab205eb7e2ebfce5813e" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 상주<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 307.93 kWh<br><b>예측 발전량(PR 가변):</b> 311.23 kWh</div>`)[0];
+                popup_918ecd1520355c6c2509ab5ffee18841.setContent(html_af3f0744b03dab205eb7e2ebfce5813e);
+            
+        
+
+        circle_marker_098a39db1e47bd02c76f5a4dec8abf9f.bindPopup(popup_918ecd1520355c6c2509ab5ffee18841)
+        ;
+
+        
+    
+    
+            var circle_marker_ada87d4ca02cd9611fb4b0a5fdba591b = L.circleMarker(
+                [36.019, 129.343],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_cd2976b8d0de5b42564d085205a068ed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c8fe5eb9b50b2cb52a98189f813a6c0f = $(`<div id="html_c8fe5eb9b50b2cb52a98189f813a6c0f" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 포항<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 305.15 kWh<br><b>예측 발전량(PR 가변):</b> 307.31 kWh</div>`)[0];
+                popup_cd2976b8d0de5b42564d085205a068ed.setContent(html_c8fe5eb9b50b2cb52a98189f813a6c0f);
+            
+        
+
+        circle_marker_ada87d4ca02cd9611fb4b0a5fdba591b.bindPopup(popup_cd2976b8d0de5b42564d085205a068ed)
+        ;
+
+        
+    
+    
+            var circle_marker_e308ce72bd5ff35aae0655f08a69af62 = L.circleMarker(
+                [35.9677, 126.7365],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_bb76b74095c18303d7ec2ad1e5a1fba3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_943867d3cbf287f6db8fd312ef2d95d9 = $(`<div id="html_943867d3cbf287f6db8fd312ef2d95d9" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 군산<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 228.56 kWh<br><b>예측 발전량(PR 가변):</b> 232.06 kWh</div>`)[0];
+                popup_bb76b74095c18303d7ec2ad1e5a1fba3.setContent(html_943867d3cbf287f6db8fd312ef2d95d9);
+            
+        
+
+        circle_marker_e308ce72bd5ff35aae0655f08a69af62.bindPopup(popup_bb76b74095c18303d7ec2ad1e5a1fba3)
+        ;
+
+        
+    
+    
+            var circle_marker_5579a74862fbc2d1be4807bb80aa68ea = L.circleMarker(
+                [35.8714, 128.6014],
+                {"bubblingMouseEvents": true, "color": "#A0522D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#A0522D", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_95dede25abebb0ab40226873b405871e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c72903ebe5b450cc88927fc680969959 = $(`<div id="html_c72903ebe5b450cc88927fc680969959" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 대구<br><b>도:</b> 대구광역시<br><b>예측 발전량(PR 고정):</b> 317.48 kWh<br><b>예측 발전량(PR 가변):</b> 319.75 kWh</div>`)[0];
+                popup_95dede25abebb0ab40226873b405871e.setContent(html_c72903ebe5b450cc88927fc680969959);
+            
+        
+
+        circle_marker_5579a74862fbc2d1be4807bb80aa68ea.bindPopup(popup_95dede25abebb0ab40226873b405871e)
+        ;
+
+        
+    
+    
+            var circle_marker_e90c55821595615ed1bcf818674d10ed = L.circleMarker(
+                [35.8242, 127.148],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_5b3a5773c929b4894e578281d3234a0e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ffc6ad5a0e0e6fc9be478c4e236ac1d2 = $(`<div id="html_ffc6ad5a0e0e6fc9be478c4e236ac1d2" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 전주<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 295.57 kWh<br><b>예측 발전량(PR 가변):</b> 297.91 kWh</div>`)[0];
+                popup_5b3a5773c929b4894e578281d3234a0e.setContent(html_ffc6ad5a0e0e6fc9be478c4e236ac1d2);
+            
+        
+
+        circle_marker_e90c55821595615ed1bcf818674d10ed.bindPopup(popup_5b3a5773c929b4894e578281d3234a0e)
+        ;
+
+        
+    
+    
+            var circle_marker_5a8f341c1003ab297314377c4cd970f1 = L.circleMarker(
+                [35.5384, 129.3114],
+                {"bubblingMouseEvents": true, "color": "#20B2AA", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#20B2AA", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_15ac4775975568390280644a76505dae = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ffdabb5b61d62445906eb7c99b40d071 = $(`<div id="html_ffdabb5b61d62445906eb7c99b40d071" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 울산<br><b>도:</b> 울산광역시<br><b>예측 발전량(PR 고정):</b> 314.01 kWh<br><b>예측 발전량(PR 가변):</b> 317.66 kWh</div>`)[0];
+                popup_15ac4775975568390280644a76505dae.setContent(html_ffdabb5b61d62445906eb7c99b40d071);
+            
+        
+
+        circle_marker_5a8f341c1003ab297314377c4cd970f1.bindPopup(popup_15ac4775975568390280644a76505dae)
+        ;
+
+        
+    
+    
+            var circle_marker_f1375bac76fcb7a512a78a82d9bdca57 = L.circleMarker(
+                [35.228, 128.681],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_fee76191811222e03fa556668b33d1fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4877c0c19144318d12efbe0dc1925210 = $(`<div id="html_4877c0c19144318d12efbe0dc1925210" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 창원<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 304.77 kWh<br><b>예측 발전량(PR 가변):</b> 307.19 kWh</div>`)[0];
+                popup_fee76191811222e03fa556668b33d1fa.setContent(html_4877c0c19144318d12efbe0dc1925210);
+            
+        
+
+        circle_marker_f1375bac76fcb7a512a78a82d9bdca57.bindPopup(popup_fee76191811222e03fa556668b33d1fa)
+        ;
+
+        
+    
+    
+            var circle_marker_abd420d7f1f6a81859a14e6924c2f48a = L.circleMarker(
+                [35.1595, 126.8526],
+                {"bubblingMouseEvents": true, "color": "#FF69B4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF69B4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_16f952a0987bff29ee7b51c4192e1de4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2f1093529d49d5602f4248bf637fd5a9 = $(`<div id="html_2f1093529d49d5602f4248bf637fd5a9" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 광주<br><b>도:</b> 광주광역시<br><b>예측 발전량(PR 고정):</b> 318.01 kWh<br><b>예측 발전량(PR 가변):</b> 320.44 kWh</div>`)[0];
+                popup_16f952a0987bff29ee7b51c4192e1de4.setContent(html_2f1093529d49d5602f4248bf637fd5a9);
+            
+        
+
+        circle_marker_abd420d7f1f6a81859a14e6924c2f48a.bindPopup(popup_16f952a0987bff29ee7b51c4192e1de4)
+        ;
+
+        
+    
+    
+            var circle_marker_b3eb2e87a2cce5c8576056fcc7404de2 = L.circleMarker(
+                [35.1796, 129.0756],
+                {"bubblingMouseEvents": true, "color": "#0000FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_67523b49cf7ee43e4ad956a5e8a01d98 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e5eba3d02fa9c2c9b5119620775ee17c = $(`<div id="html_e5eba3d02fa9c2c9b5119620775ee17c" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 부산<br><b>도:</b> 부산광역시<br><b>예측 발전량(PR 고정):</b> 330.45 kWh<br><b>예측 발전량(PR 가변):</b> 333.06 kWh</div>`)[0];
+                popup_67523b49cf7ee43e4ad956a5e8a01d98.setContent(html_e5eba3d02fa9c2c9b5119620775ee17c);
+            
+        
+
+        circle_marker_b3eb2e87a2cce5c8576056fcc7404de2.bindPopup(popup_67523b49cf7ee43e4ad956a5e8a01d98)
+        ;
+
+        
+    
+    
+            var circle_marker_f8c0992596cf281ca64a4a814993298f = L.circleMarker(
+                [34.8544, 128.4337],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_f6cccc99454094d3e42fefa2fd821b50 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c9d34eeabdabcf2fc8b10cd10b7fc594 = $(`<div id="html_c9d34eeabdabcf2fc8b10cd10b7fc594" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 통영<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 312.92 kWh<br><b>예측 발전량(PR 가변):</b> 316.29 kWh</div>`)[0];
+                popup_f6cccc99454094d3e42fefa2fd821b50.setContent(html_c9d34eeabdabcf2fc8b10cd10b7fc594);
+            
+        
+
+        circle_marker_f8c0992596cf281ca64a4a814993298f.bindPopup(popup_f6cccc99454094d3e42fefa2fd821b50)
+        ;
+
+        
+    
+    
+            var circle_marker_ef104e6d4cad4576dd00bbb0ee1944a9 = L.circleMarker(
+                [34.8118, 126.3922],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_97c717c8ed802a09ae8e1c757cc7137f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f23d7d46bcd7a5b5e94593ba7581f024 = $(`<div id="html_f23d7d46bcd7a5b5e94593ba7581f024" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 목포<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 310.60 kWh<br><b>예측 발전량(PR 가변):</b> 313.21 kWh</div>`)[0];
+                popup_97c717c8ed802a09ae8e1c757cc7137f.setContent(html_f23d7d46bcd7a5b5e94593ba7581f024);
+            
+        
+
+        circle_marker_ef104e6d4cad4576dd00bbb0ee1944a9.bindPopup(popup_97c717c8ed802a09ae8e1c757cc7137f)
+        ;
+
+        
+    
+    
+            var circle_marker_3f4998c27f31a72f156e1b9b1b633d84 = L.circleMarker(
+                [34.7604, 127.6622],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_6f140710684a7c6bf4b8a6414b91c5bb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_42321162635d53b7323b65577f0e3daa = $(`<div id="html_42321162635d53b7323b65577f0e3daa" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 여수<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 311.03 kWh<br><b>예측 발전량(PR 가변):</b> 313.50 kWh</div>`)[0];
+                popup_6f140710684a7c6bf4b8a6414b91c5bb.setContent(html_42321162635d53b7323b65577f0e3daa);
+            
+        
+
+        circle_marker_3f4998c27f31a72f156e1b9b1b633d84.bindPopup(popup_6f140710684a7c6bf4b8a6414b91c5bb)
+        ;
+
+        
+    
+    
+            var circle_marker_3c4748a2832ed92cf58df43083b09ad2 = L.circleMarker(
+                [34.6853, 125.4505],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_078e71932ac4452b2c53d8bda7b2e0e8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c1e7be4a6bf889480072c9e1b2202306 = $(`<div id="html_c1e7be4a6bf889480072c9e1b2202306" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 흑산도<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 287.88 kWh<br><b>예측 발전량(PR 가변):</b> 291.24 kWh</div>`)[0];
+                popup_078e71932ac4452b2c53d8bda7b2e0e8.setContent(html_c1e7be4a6bf889480072c9e1b2202306);
+            
+        
+
+        circle_marker_3c4748a2832ed92cf58df43083b09ad2.bindPopup(popup_078e71932ac4452b2c53d8bda7b2e0e8)
+        ;
+
+        
+    
+    
+            var circle_marker_dceb9867a1d2af086e87eec83be3b97e = L.circleMarker(
+                [34.3121, 126.7555],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_a98398bf84eb2a0c0495fe1c2846b80c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ccd443fbb65555c3f462e047ce327575 = $(`<div id="html_ccd443fbb65555c3f462e047ce327575" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 완도<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 327.94 kWh<br><b>예측 발전량(PR 가변):</b> 331.43 kWh</div>`)[0];
+                popup_a98398bf84eb2a0c0495fe1c2846b80c.setContent(html_ccd443fbb65555c3f462e047ce327575);
+            
+        
+
+        circle_marker_dceb9867a1d2af086e87eec83be3b97e.bindPopup(popup_a98398bf84eb2a0c0495fe1c2846b80c)
+        ;
+
+        
+    
+    
+            var circle_marker_83f5732f400cc2f1641fe8ff1f1b685f = L.circleMarker(
+                [35.435, 126.7073],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_47c9a8da63ca6b6909056d1953236e82 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_46992fab4766f8ca11964c98e1927ae2 = $(`<div id="html_46992fab4766f8ca11964c98e1927ae2" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 고창<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 297.80 kWh<br><b>예측 발전량(PR 가변):</b> 300.83 kWh</div>`)[0];
+                popup_47c9a8da63ca6b6909056d1953236e82.setContent(html_46992fab4766f8ca11964c98e1927ae2);
+            
+        
+
+        circle_marker_83f5732f400cc2f1641fe8ff1f1b685f.bindPopup(popup_47c9a8da63ca6b6909056d1953236e82)
+        ;
+
+        
+    
+    
+            var circle_marker_cf8ff55d708abe89d94436fb3b34b4d2 = L.circleMarker(
+                [34.95, 127.487],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_06415b934cf47cfb51963b0ca0e157d7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ec9f3f0d544454f6c8f0d190d32fd979 = $(`<div id="html_ec9f3f0d544454f6c8f0d190d32fd979" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 순천<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 188.14 kWh<br><b>예측 발전량(PR 가변):</b> 191.37 kWh</div>`)[0];
+                popup_06415b934cf47cfb51963b0ca0e157d7.setContent(html_ec9f3f0d544454f6c8f0d190d32fd979);
+            
+        
+
+        circle_marker_cf8ff55d708abe89d94436fb3b34b4d2.bindPopup(popup_06415b934cf47cfb51963b0ca0e157d7)
+        ;
+
+        
+    
+    
+            var circle_marker_e44fc1682a646daa49c4f41fc284f9af = L.circleMarker(
+                [36.601, 126.662],
+                {"bubblingMouseEvents": true, "color": "#1E90FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1E90FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_fb2b0563bc7a74c1fdfcacc0c084120b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e71e5e231549a2aa5ed134ac9e398726 = $(`<div id="html_e71e5e231549a2aa5ed134ac9e398726" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 홍성<br><b>도:</b> 충청남도<br><b>예측 발전량(PR 고정):</b> 297.74 kWh<br><b>예측 발전량(PR 가변):</b> 300.92 kWh</div>`)[0];
+                popup_fb2b0563bc7a74c1fdfcacc0c084120b.setContent(html_e71e5e231549a2aa5ed134ac9e398726);
+            
+        
+
+        circle_marker_e44fc1682a646daa49c4f41fc284f9af.bindPopup(popup_fb2b0563bc7a74c1fdfcacc0c084120b)
+        ;
+
+        
+    
+    
+            var circle_marker_6bb0f321860666051a7e6fc1f4ff14cd = L.circleMarker(
+                [36.6424, 127.489],
+                {"bubblingMouseEvents": true, "color": "#00CED1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00CED1", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_5bf9e97be1df3276d81d44315b587a5a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_82b300261928df933252debf559d23dd = $(`<div id="html_82b300261928df933252debf559d23dd" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 서청주<br><b>도:</b> 충청북도<br><b>예측 발전량(PR 고정):</b> 320.30 kWh<br><b>예측 발전량(PR 가변):</b> 321.28 kWh</div>`)[0];
+                popup_5bf9e97be1df3276d81d44315b587a5a.setContent(html_82b300261928df933252debf559d23dd);
+            
+        
+
+        circle_marker_6bb0f321860666051a7e6fc1f4ff14cd.bindPopup(popup_5bf9e97be1df3276d81d44315b587a5a)
+        ;
+
+        
+    
+    
+            var circle_marker_a5911feeb4581ba1043d282a62c0c4e4 = L.circleMarker(
+                [33.4996, 126.5312],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_dd7835e9eded70a1f97c9690d8655a00 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a194608609cc690a4c7221bd52e36a77 = $(`<div id="html_a194608609cc690a4c7221bd52e36a77" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 제주<br><b>도:</b> nan<br><b>예측 발전량(PR 고정):</b> 282.31 kWh<br><b>예측 발전량(PR 가변):</b> 282.45 kWh</div>`)[0];
+                popup_dd7835e9eded70a1f97c9690d8655a00.setContent(html_a194608609cc690a4c7221bd52e36a77);
+            
+        
+
+        circle_marker_a5911feeb4581ba1043d282a62c0c4e4.bindPopup(popup_dd7835e9eded70a1f97c9690d8655a00)
+        ;
+
+        
+    
+    
+            var circle_marker_7c1ef67fd31c4ef828fbf3e6b405705a = L.circleMarker(
+                [33.2939, 126.1628],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_2fa024e5acb692d0f5abef4c6091bd22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_df9e49853031427cb5ed35857704dbe6 = $(`<div id="html_df9e49853031427cb5ed35857704dbe6" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 고산<br><b>도:</b> nan<br><b>예측 발전량(PR 고정):</b> 286.80 kWh<br><b>예측 발전량(PR 가변):</b> 288.05 kWh</div>`)[0];
+                popup_2fa024e5acb692d0f5abef4c6091bd22.setContent(html_df9e49853031427cb5ed35857704dbe6);
+            
+        
+
+        circle_marker_7c1ef67fd31c4ef828fbf3e6b405705a.bindPopup(popup_2fa024e5acb692d0f5abef4c6091bd22)
+        ;
+
+        
+    
+    
+            var circle_marker_eab56d406cfa276734c02e82103d513f = L.circleMarker(
+                [33.3855, 126.8807],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_8b699bd8611fe95a842c65331fe67f72 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_62b0ef03c7922cb3438d9b2b62c6591e = $(`<div id="html_62b0ef03c7922cb3438d9b2b62c6591e" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 성산<br><b>도:</b> nan<br><b>예측 발전량(PR 고정):</b> 284.07 kWh<br><b>예측 발전량(PR 가변):</b> 286.72 kWh</div>`)[0];
+                popup_8b699bd8611fe95a842c65331fe67f72.setContent(html_62b0ef03c7922cb3438d9b2b62c6591e);
+            
+        
+
+        circle_marker_eab56d406cfa276734c02e82103d513f.bindPopup(popup_8b699bd8611fe95a842c65331fe67f72)
+        ;
+
+        
+    
+    
+            var circle_marker_f7f5e30ead7216d28e589aea4385d1d3 = L.circleMarker(
+                [33.2541, 126.56],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_9cd65de39be977951348397bd1be0e2d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4f4e6925d55f81a646a1f93734b846c3 = $(`<div id="html_4f4e6925d55f81a646a1f93734b846c3" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 서귀포<br><b>도:</b> nan<br><b>예측 발전량(PR 고정):</b> 313.78 kWh<br><b>예측 발전량(PR 가변):</b> 316.02 kWh</div>`)[0];
+                popup_9cd65de39be977951348397bd1be0e2d.setContent(html_4f4e6925d55f81a646a1f93734b846c3);
+            
+        
+
+        circle_marker_f7f5e30ead7216d28e589aea4385d1d3.bindPopup(popup_9cd65de39be977951348397bd1be0e2d)
+        ;
+
+        
+    
+    
+            var circle_marker_9cae2285fb7175e5861e40f99924eadf = L.circleMarker(
+                [35.18, 128.108],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_e3208c3d6a1c67de91037f3fea92b029 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_07ff81ed20ab4a39570c4a67ce5a60d5 = $(`<div id="html_07ff81ed20ab4a39570c4a67ce5a60d5" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 진주<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 320.11 kWh<br><b>예측 발전량(PR 가변):</b> 323.30 kWh</div>`)[0];
+                popup_e3208c3d6a1c67de91037f3fea92b029.setContent(html_07ff81ed20ab4a39570c4a67ce5a60d5);
+            
+        
+
+        circle_marker_9cae2285fb7175e5861e40f99924eadf.bindPopup(popup_e3208c3d6a1c67de91037f3fea92b029)
+        ;
+
+        
+    
+    
+            var circle_marker_d195d18b603b87e1a842a13fdbbdfe73 = L.circleMarker(
+                [37.7079, 126.4462],
+                {"bubblingMouseEvents": true, "color": "#FF7F00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF7F00", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_d5d5725487a4e9d7c05428b4372216d1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_92a28e5075b14cc64a9c6910e958c48d = $(`<div id="html_92a28e5075b14cc64a9c6910e958c48d" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 강화<br><b>도:</b> 인천광역시<br><b>예측 발전량(PR 고정):</b> 262.52 kWh<br><b>예측 발전량(PR 가변):</b> 267.37 kWh</div>`)[0];
+                popup_d5d5725487a4e9d7c05428b4372216d1.setContent(html_92a28e5075b14cc64a9c6910e958c48d);
+            
+        
+
+        circle_marker_d195d18b603b87e1a842a13fdbbdfe73.bindPopup(popup_d5d5725487a4e9d7c05428b4372216d1)
+        ;
+
+        
+    
+    
+            var circle_marker_c0f8c8129890072c3c5bc1e1b654f137 = L.circleMarker(
+                [37.4916, 127.4871],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_00ff3fd17de6fd10903ea521762b9229 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_edd39311c3031a421830cde2becf19b6 = $(`<div id="html_edd39311c3031a421830cde2becf19b6" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 양평<br><b>도:</b> 경기도<br><b>예측 발전량(PR 고정):</b> 279.61 kWh<br><b>예측 발전량(PR 가변):</b> 284.24 kWh</div>`)[0];
+                popup_00ff3fd17de6fd10903ea521762b9229.setContent(html_edd39311c3031a421830cde2becf19b6);
+            
+        
+
+        circle_marker_c0f8c8129890072c3c5bc1e1b654f137.bindPopup(popup_00ff3fd17de6fd10903ea521762b9229)
+        ;
+
+        
+    
+    
+            var circle_marker_6328e70879afbc81aed94da7ae394b45 = L.circleMarker(
+                [37.2796, 127.442],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_436de280c274f25cba088a09b3808f14 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1edd74e8b0fe50bcfdf0c62212517be6 = $(`<div id="html_1edd74e8b0fe50bcfdf0c62212517be6" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 이천<br><b>도:</b> 경기도<br><b>예측 발전량(PR 고정):</b> 296.70 kWh<br><b>예측 발전량(PR 가변):</b> 301.53 kWh</div>`)[0];
+                popup_436de280c274f25cba088a09b3808f14.setContent(html_1edd74e8b0fe50bcfdf0c62212517be6);
+            
+        
+
+        circle_marker_6328e70879afbc81aed94da7ae394b45.bindPopup(popup_436de280c274f25cba088a09b3808f14)
+        ;
+
+        
+    
+    
+            var circle_marker_8ddb2058bdbd8d42640f101ecea024c6 = L.circleMarker(
+                [38.0685, 128.1703],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_dd3f097042abe421c57039cf0662a2b8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_467284a3f277007366addc7614f32eed = $(`<div id="html_467284a3f277007366addc7614f32eed" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 인제<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 313.78 kWh<br><b>예측 발전량(PR 가변):</b> 319.79 kWh</div>`)[0];
+                popup_dd3f097042abe421c57039cf0662a2b8.setContent(html_467284a3f277007366addc7614f32eed);
+            
+        
+
+        circle_marker_8ddb2058bdbd8d42640f101ecea024c6.bindPopup(popup_dd3f097042abe421c57039cf0662a2b8)
+        ;
+
+        
+    
+    
+            var circle_marker_a33e97adc7464660d28fd4cc5a2e6bed = L.circleMarker(
+                [37.6919, 127.8802],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_5e898c381489f499c0cea39f1e278c1f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1f7465ffbc02c598f749aae3ebec8f6e = $(`<div id="html_1f7465ffbc02c598f749aae3ebec8f6e" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 홍천<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 330.87 kWh<br><b>예측 발전량(PR 가변):</b> 336.80 kWh</div>`)[0];
+                popup_5e898c381489f499c0cea39f1e278c1f.setContent(html_1f7465ffbc02c598f749aae3ebec8f6e);
+            
+        
+
+        circle_marker_a33e97adc7464660d28fd4cc5a2e6bed.bindPopup(popup_5e898c381489f499c0cea39f1e278c1f)
+        ;
+
+        
+    
+    
+            var circle_marker_f384a8ddc790d0a65c2662249314b2c6 = L.circleMarker(
+                [37.1642, 128.9856],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_8a888a496c896503f2ba163c9d97ce07 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed3665cfe51a37302467a791a5aaba5d = $(`<div id="html_ed3665cfe51a37302467a791a5aaba5d" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 태백<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 339.89 kWh<br><b>예측 발전량(PR 가변):</b> 348.07 kWh</div>`)[0];
+                popup_8a888a496c896503f2ba163c9d97ce07.setContent(html_ed3665cfe51a37302467a791a5aaba5d);
+            
+        
+
+        circle_marker_f384a8ddc790d0a65c2662249314b2c6.bindPopup(popup_8a888a496c896503f2ba163c9d97ce07)
+        ;
+
+        
+    
+    
+            var circle_marker_8c9d95c1349257a8fc4074b45b23260c = L.circleMarker(
+                [37.38, 128.66],
+                {"bubblingMouseEvents": true, "color": "#228B22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#228B22", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_b93d9728f34f5517f1f437b09beca83b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_59aa68e087b8399bdc54bfe911577a23 = $(`<div id="html_59aa68e087b8399bdc54bfe911577a23" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 정선군<br><b>도:</b> 강원특별자치도<br><b>예측 발전량(PR 고정):</b> 169.71 kWh<br><b>예측 발전량(PR 가변):</b> 173.28 kWh</div>`)[0];
+                popup_b93d9728f34f5517f1f437b09beca83b.setContent(html_59aa68e087b8399bdc54bfe911577a23);
+            
+        
+
+        circle_marker_8c9d95c1349257a8fc4074b45b23260c.bindPopup(popup_b93d9728f34f5517f1f437b09beca83b)
+        ;
+
+        
+    
+    
+            var circle_marker_d0f97c48a3456f96cf8f04273603446e = L.circleMarker(
+                [37.1326, 128.2005],
+                {"bubblingMouseEvents": true, "color": "#00CED1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00CED1", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_5cf08e904f231a477889cff06d1c2036 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_55e712e4842c8ef9a29809df9714e707 = $(`<div id="html_55e712e4842c8ef9a29809df9714e707" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 제천<br><b>도:</b> 충청북도<br><b>예측 발전량(PR 고정):</b> 283.30 kWh<br><b>예측 발전량(PR 가변):</b> 288.36 kWh</div>`)[0];
+                popup_5cf08e904f231a477889cff06d1c2036.setContent(html_55e712e4842c8ef9a29809df9714e707);
+            
+        
+
+        circle_marker_d0f97c48a3456f96cf8f04273603446e.bindPopup(popup_5cf08e904f231a477889cff06d1c2036)
+        ;
+
+        
+    
+    
+            var circle_marker_82997e194bb79a3f8cfbf25ab6e7f36b = L.circleMarker(
+                [36.489, 127.729],
+                {"bubblingMouseEvents": true, "color": "#00CED1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00CED1", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_4873d5284d5b1ffc1c303b312368537a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e5aa85585c2a48eba7d93f7ca928cb48 = $(`<div id="html_e5aa85585c2a48eba7d93f7ca928cb48" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 보은<br><b>도:</b> 충청북도<br><b>예측 발전량(PR 고정):</b> 82.01 kWh<br><b>예측 발전량(PR 가변):</b> 83.38 kWh</div>`)[0];
+                popup_4873d5284d5b1ffc1c303b312368537a.setContent(html_e5aa85585c2a48eba7d93f7ca928cb48);
+            
+        
+
+        circle_marker_82997e194bb79a3f8cfbf25ab6e7f36b.bindPopup(popup_4873d5284d5b1ffc1c303b312368537a)
+        ;
+
+        
+    
+    
+            var circle_marker_87ab80720ae7bb710a9b270978ba9909 = L.circleMarker(
+                [36.815, 127.155],
+                {"bubblingMouseEvents": true, "color": "#1E90FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1E90FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_f3f0953ab44461f66c74f71d2496e974 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_833dcdf18a37cfb08d8b44b9f3af33f9 = $(`<div id="html_833dcdf18a37cfb08d8b44b9f3af33f9" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 천안<br><b>도:</b> 충청남도<br><b>예측 발전량(PR 고정):</b> 245.84 kWh<br><b>예측 발전량(PR 가변):</b> 249.77 kWh</div>`)[0];
+                popup_f3f0953ab44461f66c74f71d2496e974.setContent(html_833dcdf18a37cfb08d8b44b9f3af33f9);
+            
+        
+
+        circle_marker_87ab80720ae7bb710a9b270978ba9909.bindPopup(popup_f3f0953ab44461f66c74f71d2496e974)
+        ;
+
+        
+    
+    
+            var circle_marker_eeb3aa7d80fec53b8047a6fe07bf1990 = L.circleMarker(
+                [36.3333, 126.6125],
+                {"bubblingMouseEvents": true, "color": "#1E90FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1E90FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_819879700260d969699255f0f4c0a38f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9edd5756358d2f90ab57364f86fe285b = $(`<div id="html_9edd5756358d2f90ab57364f86fe285b" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 보령<br><b>도:</b> 충청남도<br><b>예측 발전량(PR 고정):</b> 327.74 kWh<br><b>예측 발전량(PR 가변):</b> 332.57 kWh</div>`)[0];
+                popup_819879700260d969699255f0f4c0a38f.setContent(html_9edd5756358d2f90ab57364f86fe285b);
+            
+        
+
+        circle_marker_eeb3aa7d80fec53b8047a6fe07bf1990.bindPopup(popup_819879700260d969699255f0f4c0a38f)
+        ;
+
+        
+    
+    
+            var circle_marker_d029419b0d29e6ab6fe2d7b3674bf7b2 = L.circleMarker(
+                [36.273, 126.909],
+                {"bubblingMouseEvents": true, "color": "#1E90FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1E90FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_7e090411e83a83f295122f6526538041 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ac201da708e8e97e983bba1fd158cb58 = $(`<div id="html_ac201da708e8e97e983bba1fd158cb58" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 부여<br><b>도:</b> 충청남도<br><b>예측 발전량(PR 고정):</b> 249.61 kWh<br><b>예측 발전량(PR 가변):</b> 253.37 kWh</div>`)[0];
+                popup_7e090411e83a83f295122f6526538041.setContent(html_ac201da708e8e97e983bba1fd158cb58);
+            
+        
+
+        circle_marker_d029419b0d29e6ab6fe2d7b3674bf7b2.bindPopup(popup_7e090411e83a83f295122f6526538041)
+        ;
+
+        
+    
+    
+            var circle_marker_205a6f20e6f0494f9f66801968be3a00 = L.circleMarker(
+                [36.104, 127.488],
+                {"bubblingMouseEvents": true, "color": "#1E90FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1E90FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_3af5fe35236a9e7957d826ebdadc3009 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_14c12a8d19fd1682303f419e97cab1fe = $(`<div id="html_14c12a8d19fd1682303f419e97cab1fe" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 금산<br><b>도:</b> 충청남도<br><b>예측 발전량(PR 고정):</b> 286.27 kWh<br><b>예측 발전량(PR 가변):</b> 290.91 kWh</div>`)[0];
+                popup_3af5fe35236a9e7957d826ebdadc3009.setContent(html_14c12a8d19fd1682303f419e97cab1fe);
+            
+        
+
+        circle_marker_205a6f20e6f0494f9f66801968be3a00.bindPopup(popup_3af5fe35236a9e7957d826ebdadc3009)
+        ;
+
+        
+    
+    
+            var circle_marker_8dc8c0e7d4247fcdf046349f394407c5 = L.circleMarker(
+                [36.4801, 127.2892],
+                {"bubblingMouseEvents": true, "color": "#1E90FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1E90FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_4758289ece55446c450c0c050c834058 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_94927fbae90195c71531d16a8c43c22b = $(`<div id="html_94927fbae90195c71531d16a8c43c22b" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 세종<br><b>도:</b> 충청남도<br><b>예측 발전량(PR 고정):</b> 304.76 kWh<br><b>예측 발전량(PR 가변):</b> 308.57 kWh</div>`)[0];
+                popup_4758289ece55446c450c0c050c834058.setContent(html_94927fbae90195c71531d16a8c43c22b);
+            
+        
+
+        circle_marker_8dc8c0e7d4247fcdf046349f394407c5.bindPopup(popup_4758289ece55446c450c0c050c834058)
+        ;
+
+        
+    
+    
+            var circle_marker_9517e97cd03418ffdd5b52ad7aef7b48 = L.circleMarker(
+                [35.729, 126.733],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_ea17bbdf2cfcf97096ad40cef3dbcbe1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a5d6cf1bbbf6eb9576c48b540442dc8d = $(`<div id="html_a5d6cf1bbbf6eb9576c48b540442dc8d" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 부안<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 253.63 kWh<br><b>예측 발전량(PR 가변):</b> 257.24 kWh</div>`)[0];
+                popup_ea17bbdf2cfcf97096ad40cef3dbcbe1.setContent(html_a5d6cf1bbbf6eb9576c48b540442dc8d);
+            
+        
+
+        circle_marker_9517e97cd03418ffdd5b52ad7aef7b48.bindPopup(popup_ea17bbdf2cfcf97096ad40cef3dbcbe1)
+        ;
+
+        
+    
+    
+            var circle_marker_c1b9f33bc194cf9c2c9caf7889ce0e15 = L.circleMarker(
+                [35.613, 127.289],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_d573849f34f3a014a8ae50a4be1d9ef3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9dfa7a4262b8a075858f6f05d1965af4 = $(`<div id="html_9dfa7a4262b8a075858f6f05d1965af4" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 임실<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 297.50 kWh<br><b>예측 발전량(PR 가변):</b> 302.63 kWh</div>`)[0];
+                popup_d573849f34f3a014a8ae50a4be1d9ef3.setContent(html_9dfa7a4262b8a075858f6f05d1965af4);
+            
+        
+
+        circle_marker_c1b9f33bc194cf9c2c9caf7889ce0e15.bindPopup(popup_d573849f34f3a014a8ae50a4be1d9ef3)
+        ;
+
+        
+    
+    
+            var circle_marker_9370c5241a4026d5ccab8f589c830ae8 = L.circleMarker(
+                [35.5677, 126.85],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_690429abdbceb92800514aee8d3df349 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b4c3f4490f430841b11cb448e251e89a = $(`<div id="html_b4c3f4490f430841b11cb448e251e89a" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 정읍<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 319.58 kWh<br><b>예측 발전량(PR 가변):</b> 323.92 kWh</div>`)[0];
+                popup_690429abdbceb92800514aee8d3df349.setContent(html_b4c3f4490f430841b11cb448e251e89a);
+            
+        
+
+        circle_marker_9370c5241a4026d5ccab8f589c830ae8.bindPopup(popup_690429abdbceb92800514aee8d3df349)
+        ;
+
+        
+    
+    
+            var circle_marker_e17921f9125322f3089bf4f65cd89e22 = L.circleMarker(
+                [35.416, 127.39],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_808fdf19ddb672ea4532a0a95ae73e4c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d3cebc051fc2fde335dbfabcb8343cab = $(`<div id="html_d3cebc051fc2fde335dbfabcb8343cab" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 남원<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 223.20 kWh<br><b>예측 발전량(PR 가변):</b> 226.54 kWh</div>`)[0];
+                popup_808fdf19ddb672ea4532a0a95ae73e4c.setContent(html_d3cebc051fc2fde335dbfabcb8343cab);
+            
+        
+
+        circle_marker_e17921f9125322f3089bf4f65cd89e22.bindPopup(popup_808fdf19ddb672ea4532a0a95ae73e4c)
+        ;
+
+        
+    
+    
+            var circle_marker_344a2e0dd3a0f527e32027826c813796 = L.circleMarker(
+                [35.6483, 127.5211],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_06d41577087ca0d44ea03325cb06db68 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_aad2087e64cb41e76c9fe510a5c390c7 = $(`<div id="html_aad2087e64cb41e76c9fe510a5c390c7" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 장수<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 164.99 kWh<br><b>예측 발전량(PR 가변):</b> 168.31 kWh</div>`)[0];
+                popup_06d41577087ca0d44ea03325cb06db68.setContent(html_aad2087e64cb41e76c9fe510a5c390c7);
+            
+        
+
+        circle_marker_344a2e0dd3a0f527e32027826c813796.bindPopup(popup_06d41577087ca0d44ea03325cb06db68)
+        ;
+
+        
+    
+    
+            var circle_marker_ddc045918e85a1e9c2b4956cd347fdae = L.circleMarker(
+                [35.435, 126.7073],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_79d7c1a48a34675e356636e332b97073 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3ec9155ba5264c4a722659a6cb6fcc17 = $(`<div id="html_3ec9155ba5264c4a722659a6cb6fcc17" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 고창군<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 303.34 kWh<br><b>예측 발전량(PR 가변):</b> 306.34 kWh</div>`)[0];
+                popup_79d7c1a48a34675e356636e332b97073.setContent(html_3ec9155ba5264c4a722659a6cb6fcc17);
+            
+        
+
+        circle_marker_ddc045918e85a1e9c2b4956cd347fdae.bindPopup(popup_79d7c1a48a34675e356636e332b97073)
+        ;
+
+        
+    
+    
+            var circle_marker_6cb35484a925bc9a97b882302fcfa1af = L.circleMarker(
+                [35.277, 126.509],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_646505d5de7c9a6d118ea9d97d976a4f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5e1f19577c2e231addd841028a003021 = $(`<div id="html_5e1f19577c2e231addd841028a003021" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 영광군<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 306.76 kWh<br><b>예측 발전량(PR 가변):</b> 309.75 kWh</div>`)[0];
+                popup_646505d5de7c9a6d118ea9d97d976a4f.setContent(html_5e1f19577c2e231addd841028a003021);
+            
+        
+
+        circle_marker_6cb35484a925bc9a97b882302fcfa1af.bindPopup(popup_646505d5de7c9a6d118ea9d97d976a4f)
+        ;
+
+        
+    
+    
+            var circle_marker_34eaaa53c435e76707dcea888e37a942 = L.circleMarker(
+                [35.228, 128.889],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_72d38de4317d916aafa1f4ddcc4cb754 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_264b3b2bf0b956a1fcc06f942efd01ac = $(`<div id="html_264b3b2bf0b956a1fcc06f942efd01ac" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 김해시<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 307.98 kWh<br><b>예측 발전량(PR 가변):</b> 310.50 kWh</div>`)[0];
+                popup_72d38de4317d916aafa1f4ddcc4cb754.setContent(html_264b3b2bf0b956a1fcc06f942efd01ac);
+            
+        
+
+        circle_marker_34eaaa53c435e76707dcea888e37a942.bindPopup(popup_72d38de4317d916aafa1f4ddcc4cb754)
+        ;
+
+        
+    
+    
+            var circle_marker_a6825282a92476c199e0c305cb77929e = L.circleMarker(
+                [35.371, 127.138],
+                {"bubblingMouseEvents": true, "color": "#32CD32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#32CD32", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_3c260dd43f9825df4c1099dcfa38d960 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eb0d1f8daec50a3bfeb95c211d2d34f5 = $(`<div id="html_eb0d1f8daec50a3bfeb95c211d2d34f5" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 순창군<br><b>도:</b> 전라북도<br><b>예측 발전량(PR 고정):</b> 310.42 kWh<br><b>예측 발전량(PR 가변):</b> 313.54 kWh</div>`)[0];
+                popup_3c260dd43f9825df4c1099dcfa38d960.setContent(html_eb0d1f8daec50a3bfeb95c211d2d34f5);
+            
+        
+
+        circle_marker_a6825282a92476c199e0c305cb77929e.bindPopup(popup_3c260dd43f9825df4c1099dcfa38d960)
+        ;
+
+        
+    
+    
+            var circle_marker_471c42e39284e2c93fcc0b6a417b758f = L.circleMarker(
+                [35.2496, 128.5978],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_23abd128ea1b46aeef3eecd93cdad855 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c55778345fc22ed73c0aa9e1b00542c7 = $(`<div id="html_c55778345fc22ed73c0aa9e1b00542c7" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 북창원<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 305.50 kWh<br><b>예측 발전량(PR 가변):</b> 307.42 kWh</div>`)[0];
+                popup_23abd128ea1b46aeef3eecd93cdad855.setContent(html_c55778345fc22ed73c0aa9e1b00542c7);
+            
+        
+
+        circle_marker_471c42e39284e2c93fcc0b6a417b758f.bindPopup(popup_23abd128ea1b46aeef3eecd93cdad855)
+        ;
+
+        
+    
+    
+            var circle_marker_8cbab1019a3641857a76e06e31ee9062 = L.circleMarker(
+                [35.3342, 129.037],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_2f38a0caad3d767795612b811b3cee66 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d3e524e9964474f87dc9e54c8eef9f05 = $(`<div id="html_d3e524e9964474f87dc9e54c8eef9f05" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 양산시<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 308.54 kWh<br><b>예측 발전량(PR 가변):</b> 310.62 kWh</div>`)[0];
+                popup_2f38a0caad3d767795612b811b3cee66.setContent(html_d3e524e9964474f87dc9e54c8eef9f05);
+            
+        
+
+        circle_marker_8cbab1019a3641857a76e06e31ee9062.bindPopup(popup_2f38a0caad3d767795612b811b3cee66)
+        ;
+
+        
+    
+    
+            var circle_marker_0b05ea2e6212869b53adab50f1a727dc = L.circleMarker(
+                [34.768, 127.081],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_ea0e0a4f5627e877bca1fcc0fc99e6b2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_40cf7647158145ac29cd1fbb0b8afa48 = $(`<div id="html_40cf7647158145ac29cd1fbb0b8afa48" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 보성군<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 323.44 kWh<br><b>예측 발전량(PR 가변):</b> 326.25 kWh</div>`)[0];
+                popup_ea0e0a4f5627e877bca1fcc0fc99e6b2.setContent(html_40cf7647158145ac29cd1fbb0b8afa48);
+            
+        
+
+        circle_marker_0b05ea2e6212869b53adab50f1a727dc.bindPopup(popup_ea0e0a4f5627e877bca1fcc0fc99e6b2)
+        ;
+
+        
+    
+    
+            var circle_marker_d0facdaf6a757d11aaf8c4f922ab89cb = L.circleMarker(
+                [34.642, 126.768],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_34c44fd86aa0f0b44c10b4884a492c1a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_18bedc5292209be9fef22618c1b85ad8 = $(`<div id="html_18bedc5292209be9fef22618c1b85ad8" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 강진군<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 302.80 kWh<br><b>예측 발전량(PR 가변):</b> 305.44 kWh</div>`)[0];
+                popup_34c44fd86aa0f0b44c10b4884a492c1a.setContent(html_18bedc5292209be9fef22618c1b85ad8);
+            
+        
+
+        circle_marker_d0facdaf6a757d11aaf8c4f922ab89cb.bindPopup(popup_34c44fd86aa0f0b44c10b4884a492c1a)
+        ;
+
+        
+    
+    
+            var circle_marker_4ce14a6550999cffe2ce29c9def33a72 = L.circleMarker(
+                [34.681, 126.907],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_7a9a46d0d6ed13e0e94a2ea794957099 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c89aeac5e1eb77babd7b300b36c90e5e = $(`<div id="html_c89aeac5e1eb77babd7b300b36c90e5e" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 장흥<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 127.30 kWh<br><b>예측 발전량(PR 가변):</b> 129.41 kWh</div>`)[0];
+                popup_7a9a46d0d6ed13e0e94a2ea794957099.setContent(html_c89aeac5e1eb77babd7b300b36c90e5e);
+            
+        
+
+        circle_marker_4ce14a6550999cffe2ce29c9def33a72.bindPopup(popup_7a9a46d0d6ed13e0e94a2ea794957099)
+        ;
+
+        
+    
+    
+            var circle_marker_c7aa78237e7ac14d1a3dc3c952dbf260 = L.circleMarker(
+                [34.571, 126.598],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_3c6754cdf870ea4e9f00de930d0e9f24 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_acdd18a84cfa9fe667afad0b6386ed32 = $(`<div id="html_acdd18a84cfa9fe667afad0b6386ed32" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 해남<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 283.16 kWh<br><b>예측 발전량(PR 가변):</b> 286.66 kWh</div>`)[0];
+                popup_3c6754cdf870ea4e9f00de930d0e9f24.setContent(html_acdd18a84cfa9fe667afad0b6386ed32);
+            
+        
+
+        circle_marker_c7aa78237e7ac14d1a3dc3c952dbf260.bindPopup(popup_3c6754cdf870ea4e9f00de930d0e9f24)
+        ;
+
+        
+    
+    
+            var circle_marker_bc3b6d083a45784e251d876cb4430b4d = L.circleMarker(
+                [34.6072, 127.2892],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_a187ff782870107c29e4de69a08661f2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2c3a5be1bff7b3e02a1887a2399a02a2 = $(`<div id="html_2c3a5be1bff7b3e02a1887a2399a02a2" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 고흥<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 321.89 kWh<br><b>예측 발전량(PR 가변):</b> 326.34 kWh</div>`)[0];
+                popup_a187ff782870107c29e4de69a08661f2.setContent(html_2c3a5be1bff7b3e02a1887a2399a02a2);
+            
+        
+
+        circle_marker_bc3b6d083a45784e251d876cb4430b4d.bindPopup(popup_a187ff782870107c29e4de69a08661f2)
+        ;
+
+        
+    
+    
+            var circle_marker_7d887c81c93bb472a892e51411e556d0 = L.circleMarker(
+                [35.321, 128.261],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_5df7223708b4cec8f30fff497105e70a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5318311421d8d2ff12507219876a90bc = $(`<div id="html_5318311421d8d2ff12507219876a90bc" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 의령군<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 320.06 kWh<br><b>예측 발전량(PR 가변):</b> 322.87 kWh</div>`)[0];
+                popup_5df7223708b4cec8f30fff497105e70a.setContent(html_5318311421d8d2ff12507219876a90bc);
+            
+        
+
+        circle_marker_7d887c81c93bb472a892e51411e556d0.bindPopup(popup_5df7223708b4cec8f30fff497105e70a)
+        ;
+
+        
+    
+    
+            var circle_marker_f88ea16d5c623085cdbaa6bb54affdd1 = L.circleMarker(
+                [35.52, 127.725],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_00fb97bf2e9ae7e2307688db00c699f2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d071b214eaae82b735547c03e9a1cc9e = $(`<div id="html_d071b214eaae82b735547c03e9a1cc9e" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 함양군<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 316.84 kWh<br><b>예측 발전량(PR 가변):</b> 320.16 kWh</div>`)[0];
+                popup_00fb97bf2e9ae7e2307688db00c699f2.setContent(html_d071b214eaae82b735547c03e9a1cc9e);
+            
+        
+
+        circle_marker_f88ea16d5c623085cdbaa6bb54affdd1.bindPopup(popup_00fb97bf2e9ae7e2307688db00c699f2)
+        ;
+
+        
+    
+    
+            var circle_marker_f2fbb6270d694b83de256adb92932f90 = L.circleMarker(
+                [34.9406, 127.6955],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_8fc81770abc587d90e993dc5a8fca854 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1e45a4e434ce0e0bb859dd310e21e2e5 = $(`<div id="html_1e45a4e434ce0e0bb859dd310e21e2e5" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 광양시<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 313.39 kWh<br><b>예측 발전량(PR 가변):</b> 315.73 kWh</div>`)[0];
+                popup_8fc81770abc587d90e993dc5a8fca854.setContent(html_1e45a4e434ce0e0bb859dd310e21e2e5);
+            
+        
+
+        circle_marker_f2fbb6270d694b83de256adb92932f90.bindPopup(popup_8fc81770abc587d90e993dc5a8fca854)
+        ;
+
+        
+    
+    
+            var circle_marker_56c937ba19e180c9b33dd12f4c731faa = L.circleMarker(
+                [34.4854, 126.2646],
+                {"bubblingMouseEvents": true, "color": "#008000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_1a3f044488753ad090d1f2db9ccfa83a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_525f176fc9275ae1fd03a7c4c12c776d = $(`<div id="html_525f176fc9275ae1fd03a7c4c12c776d" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 진도군<br><b>도:</b> 전라남도<br><b>예측 발전량(PR 고정):</b> 244.19 kWh<br><b>예측 발전량(PR 가변):</b> 247.80 kWh</div>`)[0];
+                popup_1a3f044488753ad090d1f2db9ccfa83a.setContent(html_525f176fc9275ae1fd03a7c4c12c776d);
+            
+        
+
+        circle_marker_56c937ba19e180c9b33dd12f4c731faa.bindPopup(popup_1a3f044488753ad090d1f2db9ccfa83a)
+        ;
+
+        
+    
+    
+            var circle_marker_6da55e0382bb11a399200d6caf1bf5bf = L.circleMarker(
+                [36.943, 128.916],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_57f6797fc2d9e32693f2e76bdb81bf4b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2016337a764fbc00e1e42ac6d7c5c227 = $(`<div id="html_2016337a764fbc00e1e42ac6d7c5c227" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 봉화<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 235.44 kWh<br><b>예측 발전량(PR 가변):</b> 240.69 kWh</div>`)[0];
+                popup_57f6797fc2d9e32693f2e76bdb81bf4b.setContent(html_2016337a764fbc00e1e42ac6d7c5c227);
+            
+        
+
+        circle_marker_6da55e0382bb11a399200d6caf1bf5bf.bindPopup(popup_57f6797fc2d9e32693f2e76bdb81bf4b)
+        ;
+
+        
+    
+    
+            var circle_marker_9889febceba5693fd7df5336f7819604 = L.circleMarker(
+                [36.8056, 128.6244],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_236609c0508902360c59162be2451de1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_95981f3ab2e1e71d321901bd11a9ec7a = $(`<div id="html_95981f3ab2e1e71d321901bd11a9ec7a" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 영주<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 226.69 kWh<br><b>예측 발전량(PR 가변):</b> 230.95 kWh</div>`)[0];
+                popup_236609c0508902360c59162be2451de1.setContent(html_95981f3ab2e1e71d321901bd11a9ec7a);
+            
+        
+
+        circle_marker_9889febceba5693fd7df5336f7819604.bindPopup(popup_236609c0508902360c59162be2451de1)
+        ;
+
+        
+    
+    
+            var circle_marker_5337c28877e26c9219418a8d502c7e17 = L.circleMarker(
+                [36.5945, 128.1992],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_b085efae9e8ae687c00b864beef8a659 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6a6d54c2f41e095c833342c37b2e939c = $(`<div id="html_6a6d54c2f41e095c833342c37b2e939c" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 문경<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 217.94 kWh<br><b>예측 발전량(PR 가변):</b> 221.68 kWh</div>`)[0];
+                popup_b085efae9e8ae687c00b864beef8a659.setContent(html_6a6d54c2f41e095c833342c37b2e939c);
+            
+        
+
+        circle_marker_5337c28877e26c9219418a8d502c7e17.bindPopup(popup_b085efae9e8ae687c00b864beef8a659)
+        ;
+
+        
+    
+    
+            var circle_marker_fb1d3963ac1d73572f546701d38b9176 = L.circleMarker(
+                [36.435, 129.057],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_e51035a5d7e17e537373160de7eb5d36 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_608af1315f0421cfb2b88fa9c1b2931c = $(`<div id="html_608af1315f0421cfb2b88fa9c1b2931c" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 청송군<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 314.13 kWh<br><b>예측 발전량(PR 가변):</b> 318.62 kWh</div>`)[0];
+                popup_e51035a5d7e17e537373160de7eb5d36.setContent(html_608af1315f0421cfb2b88fa9c1b2931c);
+            
+        
+
+        circle_marker_fb1d3963ac1d73572f546701d38b9176.bindPopup(popup_e51035a5d7e17e537373160de7eb5d36)
+        ;
+
+        
+    
+    
+            var circle_marker_c34e527bed0d21e1698728d01285c296 = L.circleMarker(
+                [36.415, 129.365],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_e497e3c44fd592ff1a2ae1d09fc58a76 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ff3a5265bcc45203469a02d8f4e60443 = $(`<div id="html_ff3a5265bcc45203469a02d8f4e60443" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 영덕<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 183.31 kWh<br><b>예측 발전량(PR 가변):</b> 186.52 kWh</div>`)[0];
+                popup_e497e3c44fd592ff1a2ae1d09fc58a76.setContent(html_ff3a5265bcc45203469a02d8f4e60443);
+            
+        
+
+        circle_marker_c34e527bed0d21e1698728d01285c296.bindPopup(popup_e497e3c44fd592ff1a2ae1d09fc58a76)
+        ;
+
+        
+    
+    
+            var circle_marker_4ad6f427efe550262b53dceb7e765d4e = L.circleMarker(
+                [36.3522, 128.6972],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_c8a31aa0d3f6be44a8c98c4ae787842e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ec4380efc8ff0f530919f80bc96e3a14 = $(`<div id="html_ec4380efc8ff0f530919f80bc96e3a14" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 의성<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 61.18 kWh<br><b>예측 발전량(PR 가변):</b> 62.28 kWh</div>`)[0];
+                popup_c8a31aa0d3f6be44a8c98c4ae787842e.setContent(html_ec4380efc8ff0f530919f80bc96e3a14);
+            
+        
+
+        circle_marker_4ad6f427efe550262b53dceb7e765d4e.bindPopup(popup_c8a31aa0d3f6be44a8c98c4ae787842e)
+        ;
+
+        
+    
+    
+            var circle_marker_e069577fcf67a54fd3bb42c0c5d1148b = L.circleMarker(
+                [36.107, 128.3886],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_e8fa9a4eba654cb6174918a83549795a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_171f03febaa353a1fe3a882ab122e85c = $(`<div id="html_171f03febaa353a1fe3a882ab122e85c" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 구미<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 283.30 kWh<br><b>예측 발전량(PR 가변):</b> 286.44 kWh</div>`)[0];
+                popup_e8fa9a4eba654cb6174918a83549795a.setContent(html_171f03febaa353a1fe3a882ab122e85c);
+            
+        
+
+        circle_marker_e069577fcf67a54fd3bb42c0c5d1148b.bindPopup(popup_e8fa9a4eba654cb6174918a83549795a)
+        ;
+
+        
+    
+    
+            var circle_marker_ac5cbf98bf98434154a06a49ab96d18f = L.circleMarker(
+                [35.9733, 128.938],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_22c3854ba5f9766fddfa2fd3e8dccfe0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_10c345060a7861e4c452c852e256e065 = $(`<div id="html_10c345060a7861e4c452c852e256e065" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 영천<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 100.01 kWh<br><b>예측 발전량(PR 가변):</b> 101.38 kWh</div>`)[0];
+                popup_22c3854ba5f9766fddfa2fd3e8dccfe0.setContent(html_10c345060a7861e4c452c852e256e065);
+            
+        
+
+        circle_marker_ac5cbf98bf98434154a06a49ab96d18f.bindPopup(popup_22c3854ba5f9766fddfa2fd3e8dccfe0)
+        ;
+
+        
+    
+    
+            var circle_marker_26389c431cdc5462436325e44829e781 = L.circleMarker(
+                [35.8562, 129.2247],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_ad1e3e63a3035bccdeeea6ff2db7bc01 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_592f1bb7d0c6f4b3290de1671e8497c1 = $(`<div id="html_592f1bb7d0c6f4b3290de1671e8497c1" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 경주시<br><b>도:</b> 경상북도<br><b>예측 발전량(PR 고정):</b> 303.10 kWh<br><b>예측 발전량(PR 가변):</b> 306.00 kWh</div>`)[0];
+                popup_ad1e3e63a3035bccdeeea6ff2db7bc01.setContent(html_592f1bb7d0c6f4b3290de1671e8497c1);
+            
+        
+
+        circle_marker_26389c431cdc5462436325e44829e781.bindPopup(popup_ad1e3e63a3035bccdeeea6ff2db7bc01)
+        ;
+
+        
+    
+    
+            var circle_marker_aed9265d383c310b4ce072ca5c934aab = L.circleMarker(
+                [35.6863, 127.9096],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_2d4d262c9cfc9b06a6dae137796b87a5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_73963a4cf6de2abbc559abfd8008c9d5 = $(`<div id="html_73963a4cf6de2abbc559abfd8008c9d5" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 거창<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 249.85 kWh<br><b>예측 발전량(PR 가변):</b> 254.20 kWh</div>`)[0];
+                popup_2d4d262c9cfc9b06a6dae137796b87a5.setContent(html_73963a4cf6de2abbc559abfd8008c9d5);
+            
+        
+
+        circle_marker_aed9265d383c310b4ce072ca5c934aab.bindPopup(popup_2d4d262c9cfc9b06a6dae137796b87a5)
+        ;
+
+        
+    
+    
+            var circle_marker_75de2962d619704436264f73c56eca43 = L.circleMarker(
+                [35.5669, 128.1656],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_55c66dee7f1929d044db9101977b52f1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_df1fba7373312da7ceffaefa05a651c6 = $(`<div id="html_df1fba7373312da7ceffaefa05a651c6" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 합천<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 268.66 kWh<br><b>예측 발전량(PR 가변):</b> 272.43 kWh</div>`)[0];
+                popup_55c66dee7f1929d044db9101977b52f1.setContent(html_df1fba7373312da7ceffaefa05a651c6);
+            
+        
+
+        circle_marker_75de2962d619704436264f73c56eca43.bindPopup(popup_55c66dee7f1929d044db9101977b52f1)
+        ;
+
+        
+    
+    
+            var circle_marker_0d9c48197504bf30583cc23de00b817e = L.circleMarker(
+                [35.5039, 128.746],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_89b75f9cee9decf282cd6c8d52ac8f96 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5c5410d33b4f88ccc71a82eec55f4ff9 = $(`<div id="html_5c5410d33b4f88ccc71a82eec55f4ff9" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 밀양<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 287.48 kWh<br><b>예측 발전량(PR 가변):</b> 291.02 kWh</div>`)[0];
+                popup_89b75f9cee9decf282cd6c8d52ac8f96.setContent(html_5c5410d33b4f88ccc71a82eec55f4ff9);
+            
+        
+
+        circle_marker_0d9c48197504bf30583cc23de00b817e.bindPopup(popup_89b75f9cee9decf282cd6c8d52ac8f96)
+        ;
+
+        
+    
+    
+            var circle_marker_fe5d239b20c451830f4d356374db07b4 = L.circleMarker(
+                [35.4154, 127.8732],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_ca957ce379526d5a999a064ea2e87685 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dfbae34512fd55608bb645d200be2005 = $(`<div id="html_dfbae34512fd55608bb645d200be2005" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 산청<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 306.30 kWh<br><b>예측 발전량(PR 가변):</b> 310.91 kWh</div>`)[0];
+                popup_ca957ce379526d5a999a064ea2e87685.setContent(html_dfbae34512fd55608bb645d200be2005);
+            
+        
+
+        circle_marker_fe5d239b20c451830f4d356374db07b4.bindPopup(popup_ca957ce379526d5a999a064ea2e87685)
+        ;
+
+        
+    
+    
+            var circle_marker_d31e7c1e036003d47da8c183eac18b09 = L.circleMarker(
+                [34.8809, 128.6218],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_7e737acb6b833c87c831dad9973c8ac9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d8ab6dcd4da8a0229994c19a6ac0cb4c = $(`<div id="html_d8ab6dcd4da8a0229994c19a6ac0cb4c" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 거제<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 325.12 kWh<br><b>예측 발전량(PR 가변):</b> 329.55 kWh</div>`)[0];
+                popup_7e737acb6b833c87c831dad9973c8ac9.setContent(html_d8ab6dcd4da8a0229994c19a6ac0cb4c);
+            
+        
+
+        circle_marker_d31e7c1e036003d47da8c183eac18b09.bindPopup(popup_7e737acb6b833c87c831dad9973c8ac9)
+        ;
+
+        
+    
+    
+            var circle_marker_d8fc560517ecd363847874a42a117db6 = L.circleMarker(
+                [34.8371, 127.8924],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_bd4886b24a4b049291c3ed5bfe885166 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ae10e4d0b92b39a52f85538cdcb06225 = $(`<div id="html_ae10e4d0b92b39a52f85538cdcb06225" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 남해<br><b>도:</b> 경상남도<br><b>예측 발전량(PR 고정):</b> 343.95 kWh<br><b>예측 발전량(PR 가변):</b> 348.42 kWh</div>`)[0];
+                popup_bd4886b24a4b049291c3ed5bfe885166.setContent(html_ae10e4d0b92b39a52f85538cdcb06225);
+            
+        
+
+        circle_marker_d8fc560517ecd363847874a42a117db6.bindPopup(popup_bd4886b24a4b049291c3ed5bfe885166)
+        ;
+
+        
+    
+    
+            var circle_marker_e7783a9b763ae64c640c7bae98fb0e47 = L.circleMarker(
+                [35.1796, 129.0756],
+                {"bubblingMouseEvents": true, "color": "#0000FF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000FF", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+    
+        var popup_b4d18fee99f25102fea5f2d1e670981a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6b72f5049a0e0f3c6d32abdad9e4cb95 = $(`<div id="html_6b72f5049a0e0f3c6d32abdad9e4cb95" style="width: 100.0%; height: 100.0%;"><b>지점명:</b> 북부산<br><b>도:</b> 부산광역시<br><b>예측 발전량(PR 고정):</b> 324.32 kWh<br><b>예측 발전량(PR 가변):</b> 326.08 kWh</div>`)[0];
+                popup_b4d18fee99f25102fea5f2d1e670981a.setContent(html_6b72f5049a0e0f3c6d32abdad9e4cb95);
+            
+        
+
+        circle_marker_e7783a9b763ae64c640c7bae98fb0e47.bindPopup(popup_b4d18fee99f25102fea5f2d1e670981a)
+        ;
+
+        
+    
+    
+            var marker_cluster_89ccc2d9354d5008bbd29b1c35488665 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            marker_cluster_89ccc2d9354d5008bbd29b1c35488665.addTo(map_aaabae7ff357e14bc4b0ce54a1316d2c);
+        
+</script>
+</html>
