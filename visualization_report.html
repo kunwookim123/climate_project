@@ -1,0 +1,61 @@
+
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>강수량과 태양광 발전량 분석 시각화 보고서</title>
+        <style>
+            body { font-family: 'Malgun Gothic', 'Arial', sans-serif; margin: 20px; background-color: #f4f4f9; }
+            h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+            .image-container { 
+                display: flex; 
+                flex-wrap: wrap; 
+                gap: 30px; 
+                justify-content: center; 
+                margin-top: 20px; 
+            }
+            .image-box { 
+                background-color: white; 
+                padding: 20px; 
+                border-radius: 8px; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                max-width: 45%; /* 한 줄에 두 개가 나란히 오도록 설정 */
+            }
+            .image-box img { 
+                width: 100%; 
+                height: auto; 
+                border: 1px solid #ddd; 
+                border-radius: 4px;
+            }
+            .image-title { 
+                text-align: center; 
+                font-size: 1.2em; 
+                margin-bottom: 10px; 
+                color: #34495e; 
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🌞 강수량과 태양광 발전량 관계 분석 결과</h1>
+        <p>프로젝트의 핵심 시각화 자료를 하나의 보고서로 모았습니다. 산점도와 시계열 그래프를 통해 강수량의 영향력을 확인하세요.</p>
+        
+        <div class="image-container">
+            <div class="image-box">
+                <div class="image-title">1. 월 강수일수와 총 발전량의 관계 (산점도)</div>
+                <img src="그래프_저장/newplot.png" alt="강수일수와 발전량 산점도">
+            </div>
+            
+            <div class="image-box">
+                <div class="image-title">2. 월별 발전량 및 강수량 변화 추이 (이중 축 그래프)</div>
+                <img src="그래프_저장/newplot (1).png" alt="월별 발전량 및 강수량 이중 축 그래프">
+            </div>
+        </div>
+        
+        <footer>
+            <p style="text-align: center; margin-top: 50px; color: #7f8c8d;">데이터 분석 프로젝트 시각화 보고서 - 2020~2024년 데이터 기반</p>
+        </footer>
+    </body>
+    </html>
+    

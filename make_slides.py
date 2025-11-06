@@ -1,51 +1,135 @@
-from pptx import Presentation
-from pptx.util import Inches, Pt
-from pptx.enum.text import PP_ALIGN
-import os
+import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from pathlib import Path
 
-# ===== 파일 경로 설정 =====
-base_path = r"C:\Users\UserK\Documents\GitHub\climate_project\data\slides"
-image_files = [
-    "비장마_2020_02_11.png", "비장마_2021_03_20.png", "비장마_2022_09_03.png",
-    "비장마_2023_11_27.png", "비장마_2024_10_14.png",
-    "장마_2020_07_13.png", "장마_2021_07_03.png", "장마_2022_07_09.png",
-    "장마_2023_07_18.png", "장마_2024_06_29.png"
-]
+# === 1️⃣ 데이터 불러오기 ===
+weather = pd.read_csv("data/2020~2024.csv", encoding="utf-8")
+power = pd.read_csv("data/예측발전량_PR고정_수정.csv", encoding="utf-8")
 
-output_path = os.path.join(base_path, "강수량_발전량_비교_슬라이드.pptx")
+# === 2️⃣ 공통 키(지점명+일시)로 병합 ===
+merged = pd.merge(
+    weather[["지점명", "일시", "일강수량(mm)"]],
+    power[["지점명", "일시", "예측발전량_PR고정(kWh)"]],
+    on=["지점명", "일시"],
+    how="inner"
+)
 
-# ===== 프레젠테이션 객체 생성 =====
-prs = Presentation()
-prs.slide_width = Inches(13.33)
-prs.slide_height = Inches(7.5)
+# === 3️⃣ 강수량 구간 분류 ===
+bins = [0, 1, 5, 10, 20, 50, 100, 200]
+labels = ["0~1", "1~5", "5~10", "10~20", "20~50", "50~100", "100~200"]
+merged["강수량_구간"] = pd.cut(merged["일강수량(mm)"], bins=bins, labels=labels, right=False)
 
-# ===== 제목 슬라이드 =====
-slide = prs.slides.add_slide(prs.slide_layouts[6])
-title_box = slide.shapes.add_textbox(Inches(2), Inches(3), Inches(9), Inches(1))
-title_tf = title_box.text_frame
-title_tf.text = "강수량과 예측 발전량 비교 (장마철 vs 비장마철)"
-title_tf.paragraphs[0].font.size = Pt(40)
-title_tf.paragraphs[0].font.bold = True
-title_tf.paragraphs[0].alignment = PP_ALIGN.CENTER
+# === 4️⃣ 평균 발전량 및 감소율 계산 ===
+mean_power = merged.groupby("강수량_구간")["예측발전량_PR고정(kWh)"].mean().reset_index()
+mean_power.rename(columns={"예측발전량_PR고정(kWh)": "평균발전량(kWh)"}, inplace=True)
 
-# ===== 이미지별 슬라이드 생성 =====
-for img_name in image_files:
-    img_path = os.path.join(base_path, img_name)
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
+baseline = mean_power.loc[0, "평균발전량(kWh)"]  # 기준: 첫 구간
+mean_power["감소율(%)"] = (1 - (mean_power["평균발전량(kWh)"] / baseline)) * 100
 
-    # 파일명에서 제목 생성
-    title = img_name.replace(".png", "").replace("_", " ")
+# === 5️⃣ 그래프 생성 ===
+# (1) 슬라이드1: 산점도 + 회귀선
+fig1 = go.Figure()
+fig1.add_trace(go.Scatter(
+    x=merged["일강수량(mm)"],
+    y=merged["예측발전량_PR고정(kWh)"],
+    mode="markers",
+    marker=dict(color="rgba(99, 158, 255, 0.4)", size=4),
+    name="개별 데이터"
+))
 
-    # 제목 텍스트 상자
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(12), Inches(1))
-    title_tf = title_box.text_frame
-    title_tf.text = title
-    title_tf.paragraphs[0].font.size = Pt(28)
-    title_tf.paragraphs[0].font.bold = True
+# 회귀선 추가
+import numpy as np
+coef = np.polyfit(merged["일강수량(mm)"], merged["예측발전량_PR고정(kWh)"], 1)
+poly1d_fn = np.poly1d(coef)
+x_vals = np.linspace(0, merged["일강수량(mm)"].max(), 100)
+fig1.add_trace(go.Scatter(
+    x=x_vals,
+    y=poly1d_fn(x_vals),
+    mode="lines",
+    line=dict(color="red", width=2),
+    name="회귀선"
+))
+fig1.update_layout(
+    title="☔ 강수량 vs 예측 발전량 (산점도 + 회귀선)",
+    xaxis_title="일강수량 (mm)",
+    yaxis_title="예측 발전량 (kWh)",
+    template="plotly_white"
+)
 
-    # 이미지 추가
-    slide.shapes.add_picture(img_path, Inches(0.5), Inches(1.2), height=Inches(6))
+# (2) 슬라이드2: 평균 발전량 + 감소율 (이중축)
+fig2 = make_subplots(specs=[[{"secondary_y": True}]])
 
-# ===== 파일 저장 =====
-prs.save(output_path)
-print(f"✅ PPT 생성 완료: {output_path}")
+fig2.add_trace(
+    go.Scatter(
+        x=mean_power["강수량_구간"],
+        y=mean_power["평균발전량(kWh)"],
+        mode="lines+markers",
+        name="평균 발전량 (kWh)",
+        line=dict(color="orange", width=3),
+        marker=dict(size=8, color="orange", opacity=0.8)
+    ),
+    secondary_y=False,
+)
+
+fig2.add_trace(
+    go.Bar(
+        x=mean_power["강수량_구간"],
+        y=mean_power["감소율(%)"],
+        name="감소율 (%)",
+        marker_color="rgba(200,50,50,0.5)",
+        opacity=0.7
+    ),
+    secondary_y=True,
+)
+
+fig2.update_layout(
+    title="⚡ 강수량 구간별 평균 발전량 및 감소율",
+    xaxis_title="강수량 구간 (mm)",
+    yaxis_title="평균 발전량 (kWh)",
+    template="plotly_white",
+    legend=dict(x=0.8, y=1.1, orientation="h"),
+)
+fig2.update_yaxes(title_text="평균 발전량 (kWh)", secondary_y=False)
+fig2.update_yaxes(title_text="감소율 (%)", secondary_y=True)
+
+# === 6️⃣ 슬라이드 HTML로 통합 ===
+html_code = f"""
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>강수량 & 예측 발전량 분석 슬라이드</title>
+<style>
+  body {{ margin:0; background:white; overflow:hidden; }}
+  iframe {{ width:100vw; height:100vh; border:none; display:none; }}
+  iframe.active {{ display:block; }}
+</style>
+</head>
+<body>
+
+<iframe srcdoc='{fig1.to_html(include_plotlyjs="cdn", full_html=False)}' class="active"></iframe>
+<iframe srcdoc='{fig2.to_html(include_plotlyjs="cdn", full_html=False)}'></iframe>
+
+<script>
+let slides = document.querySelectorAll('iframe');
+let i = 0;
+document.addEventListener('keydown', e => {{
+  if (e.key === ' ' || e.key === 'ArrowRight') {{
+    slides[i].classList.remove('active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('active');
+  }} else if (e.key === 'ArrowLeft') {{
+    slides[i].classList.remove('active');
+    i = (i - 1 + slides.length) % slides.length;
+    slides[i].classList.add('active');
+  }}
+}});
+</script>
+
+</body>
+</html>
+"""
+
+Path("강수량_영향분석_슬라이드.html").write_text(html_code, encoding="utf-8")
+print("✅ '강수량_영향분석_슬라이드.html' 파일이 생성되었습니다!")
