@@ -1,50 +1,57 @@
 import pandas as pd
+import numpy as np
 
-# 원본 파일 이름과 저장할 파일 이름
-input_file = 'data/2020~2024_보정.csv'
-output_file = 'data/2020~2024_수정본.csv'
+# ===== 1️⃣ 파일 불러오기 =====
+file_path = "data/2020~2024_수정본.csv"  # 실제 경로 맞게 수정
+data = pd.read_csv(file_path)
 
-print(f"'{input_file}' 파일을 읽는 중입니다...")
+# ===== 2️⃣ 일시 변환 =====
+data["일시"] = pd.to_datetime(data["일시"], errors="coerce")
+data["연도"] = data["일시"].dt.year  # ✅ 추가: 연도 컬럼 생성
 
-try:
-    # CSV 파일 읽기 (한글 인코딩 문제에 대비해 'utf-8' 시도)
-    df = pd.read_csv(input_file, encoding='utf-8')
-except UnicodeDecodeError:
-    # 'utf-8' 실패 시 'cp949' (Windows 기본 한글 인코딩) 시도
-    print("UTF-8 디코딩 실패. 'cp949' 인코딩으로 다시 시도합니다.")
-    df = pd.read_csv(input_file, encoding='cp949')
-except FileNotFoundError:
-    print(f"오류: '{input_file}' 파일을 찾을 수 없습니다. 스크립트와 같은 폴더에 파일이 있는지 확인하세요.")
-    exit()
-except Exception as e:
-    print(f"파일을 읽는 중 오류가 발생했습니다: {e}")
-    exit()
+# ===== 3️⃣ 비가 없는데 일사량이 0인 경우 결측 처리 =====
+mask = (data["일강수량(mm)"] == 0) & (data["합계 일사량(MJ/m2)"] == 0)
+data.loc[mask, "합계 일사량(MJ/m2)"] = np.nan
 
-print("데이터 처리 중...")
+# ===== 4️⃣ 지점별 보간 =====
+data = data.sort_values(["지점명", "일시"])
+data["합계 일사량(MJ/m2)"] = (
+    data.groupby("지점명")["합계 일사량(MJ/m2)"]
+    .transform(lambda x: x.interpolate(method="linear", limit_direction="both"))
+)
 
-# 1. '일강수량(mm)' 컬럼 처리
-#    - 먼저 숫자형으로 변환 (숫자가 아닌 값은 NaN으로 처리)
-#    - 소수점 첫째 자리까지 반올림
-precip_col = '일강수량(mm)'
-if precip_col in df.columns:
-    df[precip_col] = pd.to_numeric(df[precip_col], errors='coerce')
-    df[precip_col] = df[precip_col].round(1)
-else:
-    print(f"경고: '{precip_col}' 컬럼을 찾을 수 없습니다.")
+# ===== 5️⃣ 기상청 기준 장마철 구분 =====
+def monsoon_period(row):
+    y, date = row["연도"], row["일시"]
+    if y == 2020 and pd.Timestamp(2020, 6, 24) <= date <= pd.Timestamp(2020, 8, 16):
+        return "장마철"
+    elif y == 2021 and pd.Timestamp(2021, 7, 3) <= date <= pd.Timestamp(2021, 7, 26):
+        return "장마철"
+    elif y == 2022 and pd.Timestamp(2022, 6, 23) <= date <= pd.Timestamp(2022, 7, 26):
+        return "장마철"
+    elif y == 2023 and pd.Timestamp(2023, 6, 25) <= date <= pd.Timestamp(2023, 7, 29):
+        return "장마철"
+    elif y == 2024 and pd.Timestamp(2024, 6, 21) <= date <= pd.Timestamp(2024, 7, 23):
+        return "장마철"
+    else:
+        return "비장마철"
 
-# 2. '합계 일사량(MJ/m2)' 컬럼 처리
-#    - 먼저 숫자형으로 변환 (숫자가 아닌 값은 NaN으로 처리)
-#    - 소수점 둘째 자리까지 반올림
-insolation_col = '합계 일사량(MJ/m2)'
-if insolation_col in df.columns:
-    df[insolation_col] = pd.to_numeric(df[insolation_col], errors='coerce')
-    df[insolation_col] = df[insolation_col].round(2)
-else:
-    print(f"경고: '{insolation_col}' 컬럼을 찾을 수 없습니다.")
+data["장마철여부"] = data.apply(monsoon_period, axis=1)
 
-# 3. 수정된 데이터프레임을 새 CSV 파일로 저장
-#    - 'utf-8-sig'는 Excel에서 한글이 깨지지 않게 하기 위해 BOM을 추가합니다.
-#    - index=False는 불필요한 인덱스 컬럼이 저장되지 않게 합니다.
-df.to_csv(output_file, index=False, encoding='utf-8-sig')
+# ===== 6️⃣ 연도별 장마철 vs 비장마철 평균 일사량 계산 =====
+annual_means = (
+    data.groupby(["연도", "장마철여부"])["합계 일사량(MJ/m2)"]
+    .mean()
+    .reset_index()
+    .pivot(index="연도", columns="장마철여부", values="합계 일사량(MJ/m2)")
+    .reset_index()
+)
 
-print(f"\n작업 완료! 수정된 데이터가 '{output_file}' 파일로 저장되었습니다.")
+# ===== 7️⃣ CSV 저장 =====
+output_path = "data/2020~2024_revised_monsoon.csv"
+data.to_csv(output_path, index=False, encoding="utf-8-sig")
+
+print("✅ 기상청 기준 장마철 반영 완료!")
+print("📁 저장 위치:", output_path)
+print("\n📊 연도별 평균 일사량 (장마철 vs 비장마철):")
+print(annual_means.round(2))

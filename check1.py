@@ -1,86 +1,83 @@
 import pandas as pd
+import plotly.graph_objects as go
 import plotly.express as px
+import plotly.io as pio
+from pathlib import Path
 
-# ===== 1️⃣ 데이터 불러오기 =====
-weather = pd.read_csv("data/2020~2024.csv", encoding="utf-8")
-power = pd.read_csv("data/예측발전량_PR고정_수정.csv", encoding="utf-8")
+# ===== 1️⃣ 데이터 로드 =====
+weather = pd.read_csv("data/2020~2024_수정본.csv", encoding="utf-8")
+power = pd.read_csv("data/예측발전량_PR가변_수정.csv", encoding="utf-8")
 
-# ===== 2️⃣ 날짜 변환 =====
-weather["일시"] = pd.to_datetime(weather["일시"], errors="coerce", format="mixed")
-power["일시"] = pd.to_datetime(power["일시"], errors="coerce", format="mixed")
+for df in [weather, power]:
+    df["일시"] = pd.to_datetime(df["일시"], errors="coerce")
 
-# ===== 3️⃣ 병합 =====
-merged = pd.merge(
-    power,
-    weather[["지점명", "일시", "일강수량(mm)", "합계 일사량(MJ/m2)"]],
-    on=["지점명", "일시"],
-    how="inner"
-)
+merged = pd.merge(weather, power, on=["지점명", "일시"], how="inner")
 
-# ===== 4️⃣ 실제 컬럼명 확인 (자동으로 처리) =====
-for col in merged.columns:
-    if "일사량" in col:
-        irr_col = col
-        break
+# ===== 2️⃣ 지역 분류 =====
+north = ["경기도", "강원특별자치도", "충청북도", "충청남도", "세종특별자치시", "대전광역시"]
+south = ["전북특별자치도", "전라남도", "경상북도", "경상남도", "광주광역시", "대구광역시", "부산광역시", "울산광역시", "제주특별자치도"]
 
-print(f"✅ 실제 일사량 컬럼명 인식됨: {irr_col}")
+def classify_region(name):
+    for r in north:
+        if r in name:
+            return "중북부"
+    for r in south:
+        if r in name:
+            return "남부"
+    return "기타"
 
-# ===== 5️⃣ 결측치 제거 =====
-merged = merged.dropna(subset=[irr_col, "예측발전량_PR고정(kWh)"])
+merged["지역구분"] = merged["지점명"].apply(classify_region)
+print(merged["지역구분"].value_counts())
 
-# ===== 6️⃣ 장마철 구분 =====
-rainy_periods = {
-    2020: ("2020-06-24", "2020-08-16"),
-    2021: ("2021-07-03", "2021-07-26"),
-    2022: ("2022-06-23", "2022-07-26"),
-    2023: ("2023-06-25", "2023-07-30"),
-    2024: ("2024-06-23", "2024-07-28"),
-}
+# ===== 3️⃣ 장마철 여부 =====
+merged["월"] = merged["일시"].dt.month
+merged["장마철여부"] = merged["월"].apply(lambda x: "장마철" if 6 <= x <= 7 else "비장마철")
 
-def 장마여부(dt):
-    y = dt.year
-    if y in rainy_periods:
-        s, e = pd.to_datetime(rainy_periods[y][0]), pd.to_datetime(rainy_periods[y][1])
-        return "장마철" if s <= dt <= e else "비장마철"
-    return "비장마철"
-
-merged["장마철여부"] = merged["일시"].apply(장마여부)
-merged["연도"] = merged["일시"].dt.year
-
-# ===== 7️⃣ 평균 일사량 계산 =====
-avg_irr = (
-    merged.groupby(["연도", "장마철여부"])[irr_col]
+# ===== 4️⃣ 손실량 계산 =====
+region_stats = (
+    merged.groupby(["지역구분", "장마철여부"])["합계 일사량(MJ/m2)_x"]
     .mean()
-    .reset_index()
+    .unstack()
+    .dropna()
 )
+region_stats["손실량(kWh)"] = (region_stats["비장마철"] - region_stats["장마철"]) * 20.835
+region_stats = region_stats.reset_index()
 
-# ===== 8️⃣ 비장마 - 장마 일사량 차이 및 발전량 손실 계산 =====
-result = avg_irr.pivot(index="연도", columns="장마철여부", values=irr_col).reset_index()
-result["일사량 감소(MJ/m2)"] = result["비장마철"] - result["장마철"]
-result["예상 발전량 손실(kWh)"] = result["일사량 감소(MJ/m2)"] * 20.835
+# ===== 5️⃣ 강수량 구간별 PR =====
+bins = [0, 1, 5, 10, 20, 50, 100, 300]
+labels = ["0~1", "1~5", "5~10", "10~20", "20~50", "50~100", "100+"]
 
-print("\n✅ 연도별 장마철 vs 비장마철 평균 일사량 및 발전량 손실 추정")
-print(result.round(3))
+merged["강수량_구간"] = pd.cut(merged["일강수량(mm)"], bins=bins, labels=labels, include_lowest=True)
+pr_by_rain = merged.groupby("강수량_구간")["PR(가변)"].mean().reset_index()
 
-# ===== 9️⃣ 시각화 =====
-fig = px.bar(
-    avg_irr,
-    x="연도",
-    y=irr_col,
-    color="장마철여부",
-    barmode="group",
-    text=irr_col,
-    color_discrete_map={"장마철": "#1f77b4", "비장마철": "#ff7f0e"},
-    title="☀️ 연도별 장마철 vs 비장마철 평균 일사량 비교",
-    labels={irr_col: "평균 일사량 (MJ/m²)"}
-)
-
-fig.update_traces(texttemplate='%{text:.2f}', textposition='outside', opacity=0.85)
-fig.update_layout(
-    yaxis_title="평균 일사량 (MJ/m²)",
-    xaxis_title="연도",
-    legend_title="기간 구분",
+# ===== 6️⃣ 그래프 1: 손실량 비교 =====
+fig1 = go.Figure()
+fig1.add_trace(go.Bar(
+    x=region_stats["지역구분"],
+    y=region_stats["손실량(kWh)"],
+    text=region_stats["손실량(kWh)"].round(1),
+    textposition="outside",
+    marker_color=["#4C72B0", "#DD8452"]
+))
+fig1.update_layout(
+    title="🌦️ 중북부 vs 남부 지역 장마철 손실량 비교",
+    xaxis_title="지역구분",
+    yaxis_title="손실량 (kWh)",
     template="plotly_white"
 )
 
-fig.show()
+# ===== 7️⃣ 그래프 2: 강수량 구간별 PR 변화 =====
+fig2 = px.line(pr_by_rain, x="강수량_구간", y="PR(가변)",
+               markers=True, title="💧 강수량 구간별 평균 PR 변화")
+fig2.update_traces(line=dict(color="#2ca02c", width=3))
+fig2.update_layout(template="plotly_white")
+
+# ===== 8️⃣ HTML로 각각 저장 =====
+Path("output").mkdir(exist_ok=True)
+
+pio.write_html(fig1, file="output/손실량_비교.html", auto_open=True)
+pio.write_html(fig2, file="output/PR_변화.html", auto_open=True)
+
+print("✅ 그래프 저장 완료!")
+print("📁 output/손실량_비교.html")
+print("📁 output/PR_변화.html")

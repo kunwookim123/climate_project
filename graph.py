@@ -1,160 +1,119 @@
 import pandas as pd
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import numpy as np
-import os
+import plotly.express as px
+import plotly.io as pio
+from pathlib import Path
 
-# ====== 경로 설정 ======
-base_path = r"C:\Users\UserK\Documents\GitHub\climate_project\data"
+# ===== 파일 경로 =====
+weather_path = "data/2020~2024_수정본.csv"
+power_path = "data/예측발전량_PR가변_수정.csv"
+OUT_DIR = Path("output")
+OUT_DIR.mkdir(exist_ok=True)
 
-# ====== 데이터 불러오기 ======
-weather = pd.read_csv(f"{base_path}\\2020~2024.csv", encoding="utf-8")
-pred = pd.read_csv(f"{base_path}\\예측발전량_PR고정_수정.csv", encoding="utf-8")
+# ===== CSV 로드 =====
+weather = pd.read_csv(weather_path, encoding="utf-8")
+power = pd.read_csv(power_path, encoding="utf-8")
 
-weather["일시"] = pd.to_datetime(weather["일시"], errors="coerce")
-pred["일시"] = pd.to_datetime(pred["일시"], errors="coerce")
+# ===== 일시 파싱 =====
+for df in [weather, power]:
+    df["일시"] = pd.to_datetime(df["일시"], errors="coerce")
 
-merged = pd.merge(pred, weather, on=["지점명", "일시"], how="left")
+# ===== 지점명 → 시도명 매핑 =====
+mapping = {
+    "서울":"서울특별시","인천":"인천광역시","수원":"경기도","성남":"경기도","안산":"경기도","의정부":"경기도",
+    "동두천":"경기도","파주":"경기도","속초":"강원특별자치도","철원":"강원특별자치도","춘천":"강원특별자치도",
+    "원주":"강원특별자치도","강릉":"강원특별자치도","청주":"충청북도","충주":"충청북도","서산":"충청남도",
+    "대전":"대전광역시","세종":"세종특별자치시","전주":"전북특별자치도","군산":"전북특별자치도",
+    "광주":"광주광역시","목포":"전라남도","여수":"전라남도","대구":"대구광역시","포항":"경상북도",
+    "부산":"부산광역시","울산":"울산광역시","창원":"경상남도","진주":"경상남도","제주":"제주특별자치도"
+}
+weather["시도명"] = weather["지점명"].map(mapping).fillna("기타")
 
-# ====== 1️⃣ 산점도 + 회귀선 ======
-x = merged["일강수량(mm)"]
-y = merged["예측발전량_PR고정(kWh)"]
+# ===== 지역구분 =====
+north = ["경기도","강원특별자치도","충청북도","충청남도","세종특별자치시","대전광역시"]
+south = ["전북특별자치도","전라남도","경상북도","경상남도","광주광역시","대구광역시","부산광역시","울산광역시","제주특별자치도"]
 
-coeffs = np.polyfit(x, y, 1)
-line = np.poly1d(coeffs)
-line_x = np.linspace(0, x.max(), 100)
-line_y = line(line_x)
+def classify_region(sido):
+    if sido in north: return "중북부"
+    if sido in south: return "남부"
+    return "기타"
 
-fig1 = go.Figure()
+weather["지역구분"] = weather["시도명"].apply(classify_region)
 
-# 산점도
-fig1.add_trace(go.Scatter(
-    x=x, y=y,
-    mode='markers',
-    marker=dict(size=6, color=x, colorscale="Blues", opacity=0.6),
-    name='데이터',
-    hovertemplate='💧강수량: %{x:.1f}mm<br>⚡발전량: %{y:.2f}kWh<extra></extra>'
-))
+# ===== 병합 =====
+merged = pd.merge(weather, power, on=["지점명","일시"], how="inner")
 
-# 회귀선
-fig1.add_trace(go.Scatter(
-    x=line_x, y=line_y,
-    mode='lines',
-    name='회귀선',
-    line=dict(color='red', width=2)
-))
+# ===== 장마철 여부 =====
+merged["월"] = merged["일시"].dt.month
+merged["장마철여부"] = merged["월"].apply(lambda x: "장마철" if 6 <= x <= 7 else "비장마철")
 
-fig1.update_layout(
-    title="💧 강수량과 ⚡ 예측 발전량의 상관관계",
-    xaxis_title="일강수량 (mm)",
-    yaxis_title="예측 발전량 (kWh)",
+# ===== 손실량 계산 =====
+irr_col = [c for c in merged.columns if "합계 일사량" in c][0]
+region_means = (
+    merged[merged["지역구분"].isin(["중북부","남부"])]
+    .groupby(["지역구분","장마철여부"])[irr_col]
+    .mean()
+    .unstack()
+    .dropna()
+)
+region_means["손실량(kWh)"] = (region_means["비장마철"] - region_means["장마철"]) * 20.835
+region_pivot = region_means.reset_index()
+
+# ===== 강수량 구간별 PR 변화 =====
+bins = [0, 1, 5, 10, 20, 50, 100, merged["일강수량(mm)"].max()]
+labels = ["0~1","1~5","5~10","10~20","20~50","50~100","100+"]
+merged["강수량_구간"] = pd.cut(merged["일강수량(mm)"], bins=bins, labels=labels, include_lowest=True)
+pr_by_rain = merged.groupby("강수량_구간")["PR(가변)"].mean().reset_index()
+
+# ===== 그래프1: PR(가변) 변화 =====
+fig_pr = px.line(
+    pr_by_rain, x="강수량_구간", y="PR(가변)", markers=True,
+    title="💧 강수량 구간별 평균 PR(가변) 변화"
+)
+fig_pr.update_traces(
+    line=dict(width=3, color="royalblue"),
+    marker=dict(size=8, color="royalblue"),
+    hovertemplate="강수량 구간: %{x}<br>평균 PR: %{y:.2f}%<extra></extra>"
+)
+fig_pr.update_layout(
+    plot_bgcolor="rgb(240,245,255)",
+    paper_bgcolor="rgb(240,245,255)",
+    font=dict(size=14),
     template="plotly_white",
-    legend=dict(x=0.02, y=0.98, bgcolor='rgba(255,255,255,0.7)'),
-    hovermode="closest"
 )
 
-# ====== 2️⃣+3️⃣ 강수량 구간별 평균 발전량 + 감소율 ======
-merged["강수량_구간"] = pd.cut(
-    merged["일강수량(mm)"],
-    bins=[0, 1, 5, 10, 20, 999],
-    labels=["0~1mm", "1~5mm", "5~10mm", "10~20mm", "20mm 이상"]
+# ===== 그래프2: 손실량 =====
+fig_loss = px.bar(
+    region_pivot,
+    x="지역구분", 
+    y="손실량(kWh)",
+    color="지역구분",
+    color_discrete_map={
+        "중북부": "royalblue",
+        "남부": "lightskyblue"
+    },
+    text=region_pivot["손실량(kWh)"].round(1),
+    title="🌦️ 중북부 vs 남부 — 장마철 손실량 비교"
 )
 
-mean_power = merged.groupby("강수량_구간")["예측발전량_PR고정(kWh)"].mean().reset_index()
-baseline = mean_power.iloc[0, 1]
-mean_power["감소율(%)"] = (1 - mean_power["예측발전량_PR고정(kWh)"] / baseline) * 100
+fig_loss.update_traces(
+    textposition="outside",
+    marker_line_width=0,
+    hovertemplate="지역: %{x}<br>손실량: %{y:.1f} kWh<extra></extra>"
+)
 
-# --- 이중축 그래프 ---
-fig2 = make_subplots(specs=[[{"secondary_y": True}]])
-
-# 왼쪽: 평균 발전량 (꺾은선)
-fig2.add_trace(go.Scatter(
-    x=mean_power["강수량_구간"],
-    y=mean_power["예측발전량_PR고정(kWh)"],
-    name="평균 발전량 (kWh)",
-    mode="lines+markers",
-    line=dict(color="#FF7F0E", width=3),
-    marker=dict(size=8, color="#FF7F0E"),
-    hovertemplate="💧강수량 구간: %{x}<br>⚡평균 발전량: %{y:.2f}kWh<extra></extra>"
-), secondary_y=False)
-
-# 오른쪽: 감소율 (막대)
-fig2.add_trace(go.Bar(
-    x=mean_power["강수량_구간"],
-    y=mean_power["감소율(%)"],
-    name="감소율 (%)",
-    marker_color="#1F77B4",
-    opacity=0.6,
-    hovertemplate="📉감소율: %{y:.1f}%<extra></extra>"
-), secondary_y=True)
-
-fig2.update_layout(
-    title="⚡ 강수량 구간별 평균 발전량 및 감소율 비교",
-    xaxis_title="강수량 구간 (mm)",
-    yaxis_title="평균 발전량 (kWh)",
+fig_loss.update_layout(
+    plot_bgcolor="rgb(245,248,255)",
+    paper_bgcolor="rgb(245,248,255)",
+    bargap=0.6,  # ✅ 막대 간격 넓히기 (폭 줄이기)
+    showlegend=False,
+    font=dict(size=14),
     template="plotly_white",
-    legend=dict(x=0.05, y=0.95, bgcolor="rgba(255,255,255,0.7)"),
-    hovermode="x unified"
+    xaxis_title="지역구분",
+    yaxis_title="손실량 (kWh)"
 )
-fig2.update_yaxes(title_text="감소율 (%)", secondary_y=True)
 
-# ====== HTML 각각 저장 ======
-fig1.write_html(os.path.join(base_path, "1_산점도.html"))
-fig2.write_html(os.path.join(base_path, "2_이중축그래프.html"))
 
-# ====== 슬라이드 HTML 생성 ======
-slides_html = f"""
-<html>
-<head>
-<meta charset="utf-8">
-<title>강수량 영향 분석 슬라이드</title>
-<style>
-body {{
-  margin: 0;
-  background-color: white;
-  overflow: hidden;
-}}
-iframe {{
-  width: 100%;
-  height: 100vh;
-  border: none;
-}}
-.page-number {{
-  position: fixed;
-  bottom: 20px;
-  right: 40px;
-  font-size: 18px;
-  color: gray;
-}}
-</style>
-<script>
-let slides = ['1_산점도.html', '2_이중축그래프.html'];
-let current = 0;
-function showSlide(n) {{
-  document.getElementById('frame').src = slides[n];
-  document.getElementById('page').innerText = (n+1) + '/' + slides.length;
-}}
-document.addEventListener('keydown', (e) => {{
-  if (e.key === ' ' || e.key === 'ArrowRight') {{
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }} else if (e.key === 'ArrowLeft') {{
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-  }}
-}});
-window.onload = () => showSlide(0);
-</script>
-</head>
-<body>
-<iframe id="frame"></iframe>
-<div id="page" class="page-number"></div>
-</body>
-</html>
-"""
-
-slide_path = os.path.join(base_path, "강수량_영향분석_슬라이드.html")
-with open(slide_path, "w", encoding="utf-8") as f:
-    f.write(slides_html)
-
-print(f"✅ 슬라이드 생성 완료: {slide_path}")
+# ===== HTML로만 저장 =====
+pio.write_html(fig_pr, file=str(OUT_DIR / "강수량구간_PR_개선.html"), auto_open=True)
+pio.write_html(fig_loss, file=str(OUT_DIR / "지역별_손실량_개선.html"), auto_open=True)
+print("✅ 그래프 생성 완료: output 폴더에 저장됨")
